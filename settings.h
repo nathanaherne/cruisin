@@ -29,8 +29,8 @@ int brakeRampPercent = 15; // Brake acceleration percent -> larger value = slowe
 
 int maxCruiseControlForwardPercent = 70; // Maximum Cruise Control forward throttle (percentage)
 int cruiseControlForwardRampPercent = 50; // Cruise Control acceleration speed (milliseconds), larger value = slower acceleration
-int cruiseControlForwardWaitSec = 5; // milliseconds Forward must be commanded for Cruise Control to activate (1000ms = 1 second)
-int cruiseControlRightButtonDisableDelaySec = 5; // milliseconds after CruiseControl enabled before Right momentary button CAN disable it
+int cruiseControlForwardWaitSec = 5; // Seconds Forward must be commanded for Cruise Control to activate (1000ms = 1 second)
+int cruiseControlRightButtonDisableDelaySec = 5; // Seconds after CruiseControl enabled before Right momentary button CAN disable it
 
 /**********************************************************************************************************************
 CONFIGURATION FOR 5V DIGITAL POTENTIOMETER VIA SPI

@@ -118,8 +118,8 @@ void loop() {
   static boolean cruiseControlOn = 0; // 1 = true, 0 = false
   static unsigned long cruiseControlMillis = 0; // the first time Forward first commanded
   static unsigned long previousCruiseControlRampMillis = 0; // the last time Cruise Control speed was updated
-  static unsigned long cruiseControlForwardWaitMs = cruiseControlForwardWaitSec * 1000; // convert Seconds to Ms
-  static unsigned long cruiseControlRightButtonDisableDelayMs = cruiseControlRightButtonDisableDelaySec * 1000; // convert Seconds to Ms
+  static int cruiseControlForwardWaitMs = cruiseControlForwardWaitSec * 1000; // convert Seconds to Ms
+  static int cruiseControlRightButtonDisableDelayMs = cruiseControlRightButtonDisableDelaySec * 1000; // convert Seconds to Ms
   // End Variable Declarations
   
   currentMillis = millis(); // Update currentMillis every loop
@@ -129,7 +129,7 @@ void loop() {
 
   // If Cruise Control has been enabled, then calculate if it should be on
   if (enableCruiseControl) {
-    cruiseControlOn = calcCruiseControl(motionCommanded, currentMillis, cruiseControlMillis, cruiseControlForwardWaitMs, cruiseControlOn);
+    cruiseControlOn = calcCruiseControl(motionCommanded, currentMillis, cruiseControlMillis, cruiseControlForwardWaitMs, cruiseControlOn, cruiseControlRightButtonDisableDelayMs);
   }
 
   // Calculate motion from button states and other details
@@ -138,43 +138,6 @@ void loop() {
       maxReverse, previousReverseRampMillis, reverseRampInterval,
       maxCruiseControlForward, previousCruiseControlRampMillis, cruiseControlForwardRampInterval, cruiseControlMillis,
       brakeValue, previousBrakeRampMillis, brakeRampInterval);
-
-  /* Calc then send throttle commands
-  switch (motionCalculated) {
-  case 1:
-    previousForwardRampMillis = increaseThrottle(currentMillis, previousForwardRampMillis, forwardRampInterval, currentThrottle, maxForward);
-    break;
-  case 2:
-    previousForwardRampMillis = reduceThrottle(currentMillis, previousForwardRampMillis, forwardRampInterval, currentThrottle, maxForward);
-    break;
-  case 3:
-    previousReverseRampMillis = reduceThrottle(currentMillis, previousReverseRampMillis, reverseRampInterval, currentThrottle, maxReverse);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
-    break;
-  case 4:
-    previousReverseRampMillis = increaseThrottle(currentMillis, previousReverseRampMillis, reverseRampInterval, currentThrottle, maxReverse);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
-    break;
-  case 5:
-    previousCruiseControlRampMillis = increaseThrottle(currentMillis, previousCruiseControlRampMillis, cruiseControlForwardRampInterval, currentThrottle, maxCruiseControlForward);
-    break;
-  case 6:
-    previousCruiseControlRampMillis = reduceThrottle(currentMillis, previousCruiseControlRampMillis, cruiseControlForwardRampInterval, currentThrottle, maxCruiseControlForward);
-    break;
-  case 7:
-    previousBrakeRampMillis = reduceThrottle(currentMillis, previousBrakeRampMillis, brakeRampInterval, currentThrottle, brakeValue);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
-    break;
-  case 8:
-    previousBrakeRampMillis = increaseThrottle(currentMillis, previousBrakeRampMillis, brakeRampInterval, currentThrottle, brakeValue);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
-    break;
-  case 9:
-    sendThrottleCommand(brakeValue); // send brake throttle value anyway
-    cruiseControlMillis = currentMillis;  // reset CruiseControlMillis counter
-    break;
-}
-*/
   
 }
 
@@ -206,7 +169,8 @@ int getButtons() {
   }
 }
 
-boolean calcCruiseControl(int motionCommanded, unsigned long currentMillis, unsigned long cruiseControlMillis, unsigned long cruiseControlForwardWaitMs, boolean cruiseControlOn) {
+boolean calcCruiseControl(int motionCommanded, unsigned long currentMillis, unsigned long cruiseControlMillis, int cruiseControlForwardWaitMs, 
+          boolean cruiseControlOn, int cruiseControlRightButtonDisableDelayMs) {
 
   // Check to see if Forward has been commanded for more than CruiseControlForwardInterval
   if (motionCommanded == 1 && !cruiseControlOn && currentMillis - cruiseControlMillis >= cruiseControlForwardWaitMs) {
@@ -218,8 +182,8 @@ boolean calcCruiseControl(int motionCommanded, unsigned long currentMillis, unsi
     #endif
   }
 
-  // Disable Cruise Control if actioned to be disabled
-  if (cruiseControlOn && (motionCommanded == 2 || motionCommanded == 3)) {
+  // Disable Cruise Control if actioned to be disabled OR cruiseControlRightButtonDisableDelayMs has elapsed
+  if (cruiseControlOn && (motionCommanded == 2 || motionCommanded == 3)) { // || (motionCommanded == 1 && cruiseControlMillis + cruiseControlRightButtonDisableDelayMs > currentMillis)
     cruiseControlOn = 0;
     
     #ifdef Debug
@@ -242,7 +206,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   // Forward commanded and reverseMotorDirection = false PLUS
   // cruiseControlOn = false -> forward is different to CruiseControl 
   // currentThrottle >= brakeValue -> when going from reverse to forward, brakeRampInterval unsed until currentThrottle = brakeValue 
-  // currentThrottle <= maxForward -> if forward commanded BEFORE throttle is below maxForward
+  // currentThrottle <= maxForward -> if forward commanded BEFORE throttle is below maxForward then vehicle must be braked first
   if (motionCommanded == 1 && !cruiseControlOn && !reverseMotorDirection && currentThrottle >= brakeValue && currentThrottle <= maxForward + 1) {
     #ifdef Debug
     Serial.print("Forward - ");
@@ -252,13 +216,13 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   // Forward commanded and reverseMotorDirection = true PLUS
   // cruiseControlOn = false -> forward is different to CruiseControl 
   // currentThrottle >= brakeValue -> when going from reverse to forward, brakeRampInterval unsed until currentThrottle = brakeValue 
-  // currentThrottle <= maxForward -> if forward commanded BEFORE throttle is below maxForward */
+  // currentThrottle <= maxForward -> if forward commanded BEFORE throttle is below maxForward then vehicle must be braked first
   else if (motionCommanded == 1 && !cruiseControlOn && reverseMotorDirection && currentThrottle <= brakeValue && currentThrottle >= maxForward + 1) {
     #ifdef Debug
     Serial.print("Forward - ");
     #endif
     reduceThrottle(currentMillis, previousForwardRampMillis, forwardRampInterval, currentThrottle, maxForward);
-  }  
+  }
   // Reverse commanded and reverseMotorDirection = false
   else if (motionCommanded == 2  && !reverseMotorDirection && currentThrottle <= brakeValue) {
     #ifdef Debug
@@ -307,7 +271,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   }
   // Brake
   else if ((motionCommanded == 0 || motionCommanded == 3) && currentThrottle == brakeValue) {
-    sendThrottleCommand(brakeValue); // Send BrakeValue to controller anyway
+    sendThrottleCommand(brakeValue); // Send BrakeValue to controller anyway as a keepalive for controllers that need it
     cruiseControlMillis = currentMillis;  // reset CruiseControlMillis counter
     
     #ifdef Debug
