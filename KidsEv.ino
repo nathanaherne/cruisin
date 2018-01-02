@@ -206,7 +206,7 @@ int getButtons() {
   }
 }
 
-int calcCruiseControl(int motionCommanded, unsigned long currentMillis, unsigned long cruiseControlMillis, unsigned long cruiseControlForwardWaitMs, boolean cruiseControlOn) {
+boolean calcCruiseControl(int motionCommanded, unsigned long currentMillis, unsigned long cruiseControlMillis, unsigned long cruiseControlForwardWaitMs, boolean cruiseControlOn) {
 
   // Check to see if Forward has been commanded for more than CruiseControlForwardInterval
   if (motionCommanded == 1 && !cruiseControlOn && currentMillis - cruiseControlMillis >= cruiseControlForwardWaitMs) {
