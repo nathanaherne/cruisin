@@ -29,8 +29,8 @@ int brakeRampPercent = 15; // Brake acceleration percent -> larger value = slowe
 
 int maxCruiseControlForwardPercent = 70; // Maximum Cruise Control forward throttle (percentage)
 int cruiseControlForwardRampPercent = 50; // Cruise Control acceleration speed (milliseconds), larger value = slower acceleration
-int cruiseControlForwardWait = 30000; // milliseconds Forward must be commanded for Cruise Control to activate (1000ms = 1 second)
-int cruiseControlForwardDelay = 5000; // milliseconds after CruiseControl enabled before Forward momentary button disables it
+int cruiseControlForwardWaitSec = 5; // milliseconds Forward must be commanded for Cruise Control to activate (1000ms = 1 second)
+int cruiseControlRightButtonDisableDelaySec = 5; // milliseconds after CruiseControl enabled before Right momentary button CAN disable it
 
 /**********************************************************************************************************************
 CONFIGURATION FOR 5V DIGITAL POTENTIOMETER VIA SPI
@@ -93,18 +93,18 @@ int brakeRampInterval;
 int cruiseControlForwardRampInterval;
 
 // Forward
-unsigned long previousForwardRampMillis = 0; // the last time Forward speed was updated
+//unsigned long previousForwardRampMillis = 0; // the last time Forward speed was updated
 
 // Cruise Control
-boolean cruiseControlOn = 0; // 1 = true, 0 = false
-unsigned long cruiseControlMillis = 0; // the first time Forward first commanded
-unsigned long previousCruiseControlRampMillis = 0; // the last time Forward speed was updated
+//boolean cruiseControlOn = 0; // 1 = true, 0 = false
+//unsigned long cruiseControlMillis = 0; // the first time Forward first commanded
+//unsigned long previousCruiseControlRampMillis = 0; // the last time Forward speed was updated
 
 // Reverse configuration
-unsigned long previousReverseRampMillis = 0; // the last time Reverse speed was updated
-unsigned long previousBrakeRampMillis = 0; // will store last time brake throttle was updated
+//unsigned long previousReverseRampMillis = 0; // the last time Reverse speed was updated
+//unsigned long previousBrakeRampMillis = 0; // will store last time brake throttle was updated
 
 // current millis value
-unsigned long currentMillis;
+//unsigned long currentMillis;
 
-int currentThrottle = brakeValue; // The current throttle value - initialise as brake
+//int currentThrottle = brakeValue; // The current throttle value - initialise as brake
