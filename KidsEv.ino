@@ -217,7 +217,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   // cruiseControlOn = false -> forward is different to CruiseControl 
   // currentThrottle >= brakeValue -> when going from reverse to forward, brakeRampInterval unsed until currentThrottle = brakeValue 
   // currentThrottle <= maxForward -> if forward commanded BEFORE throttle is below maxForward then vehicle must be braked first
-  else if (motionCommanded == 1 && !cruiseControlOn && reverseMotorDirection && currentThrottle <= brakeValue && currentThrottle >= maxForward + 1) {
+  else if (motionCommanded == 1 && !cruiseControlOn && reverseMotorDirection && currentThrottle <= brakeValue && currentThrottle >= maxForward - 1) {
     #ifdef Debug
     Serial.print("Forward - ");
     #endif
