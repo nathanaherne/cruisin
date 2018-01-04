@@ -2,7 +2,7 @@
 
 # OVERVIEW
 
-Code to turn a mobility scooter into an electric car for a child.
+Code for Arduino to turn a mobility scooter into an electric car for a child.
 
 This software was developed to take input from two momentary switches (buttons) (named Right and Left) and translate button pushes into motion.
 - Pressing the Right button, results in the car moving forwards
@@ -11,15 +11,26 @@ This software was developed to take input from two momentary switches (buttons) 
 - When Cruise Control is enabled pressing the Left button disables Cruise Control and the car will brake
 - Pressing no buttons results in the car stopping
 
+NOTE:
+1. This software has a feature called Cruise Control (which can be disabled), which results the Arduino holding full throttle without input after 
+Forward has been commanded a set amount of time (default 30 seconds but can be changed). This feature was created because the children I created
+these cars for (7 families in our neighborhood so far) complained that pushing the button for long periods of time hurt their fingers. 
+Cruise Control can have an unintended side effect (which has happened to one of the very young children) where the child falls off the car 
+while Cruise Control is enabled, which results in the car continuing on its merry way without a driver.
+
 # MOTOR CONTROLLERS SUPPORTED
 
-This software was developed to interface with several motor controllers. IF you can afford it, I recommend you use a General Purpose Motor Controller 
-as it makes things much simpler.
+This software was developed to interface with several motor controllers. IF you can justify the extra money, I recommend using a General Purpose Motor Controller 
+as it makes the whole process much simpler.
 
-## Mobility scooter controllers
-1. Dynamic Controls
+## Mobility scooter controllers that are tested to work with digital potentiometers
+1. Dynamic Controls R-Series
 2. PG Drives (Curtiss Wright)
 3. Some chinese controllers
+
+NOTE:
+1. If you find the motor controller on your donor mobility scooter does not work with digital potentiometers, you can use the wigwag from the mobility 
+scooter to control forward/reverse.
 
 Motor scooter controllers usually have a features you do not see in general motor controllers:
 1. Potentiometer control of speed (5v, 12v)
@@ -32,13 +43,17 @@ Some controllers use 0-12v, which creates problems for modern microcontrollers a
 
 Some controllers do not work with digital potentiometers which results in you not being able to control the speed programatically. 
 The contollers that do not work or intermittantly work are
-1. Dyanmic Controls Rhino - Blue in color
-2. PG Drives Solo - Black and Silver versions
+1. Dyanmic Controls Rhino - Blue in color (does not work with digital potentiometer)
+2. PG Drives Solo - Black and Silver versions (sometimes works, sometimes not)
 
-In my experience, Dynamic Controls support are much easier to work with than PG Drives (owned by Curtis Wright) support. Both companies Support people respond 
-very quickly but PG Drives are seem reluctant to provide much technical support. Dynamic Controls on the other hand provide full technical manuals for their contollers.
-When using either companies controllers, make sure you keep all the original electronics from your donor mobility scooter. This will allow you to get status indications
-from the controllers and determine the wiring the controller expects to see.
+In my experience, Dynamic Controls Support are easier to work with than PG Drives (owned by Curtiss Wright) Support. Both companies Support people respond 
+very quickly but PG Drives seem reluctant to provide much technical information about their product. Dynamic Controls on the other hand post full technical
+manuals on the internet for their contollers. 
+
+NOTE:
+1. When using any mobility scooter controller, make sure you keep all the original electronics from your donor mobility scooter. 
+This will allow you to get status indications from the controllers and determine the wiring the controller expects to see.
+2. Having a multimeter will help immensely to work out expected wiring when using a mobility scooter motor controller.
 
 ## General purpose motor controllers
 1. Dimension Engineering Syren50 (single motor control)

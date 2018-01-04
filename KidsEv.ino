@@ -1,3 +1,19 @@
+/*********************************************************************
+MOTOR CONTROLLER OPTION
+Options are:
+ 1. SpiPot5v - Mobility scooter controller with 5v Pot
+ 2. SpiPot12v - Mobility scooter controller with 12v Pot
+ 3. Syren50 - Dimension Engineering Syren50 motor controller
+ 4. Sabertooth2x32 - Dimension Engineering Sabertooth 2x32 motor controller
+*/
+#define SpiPot5v
+/*********************************************************************/
+
+// Turn on/off debugging output
+#define Debug
+/*********************************************************************/
+
+// Other settings
 #include "settings.h"
 
 void setup() {
@@ -18,7 +34,7 @@ void setup() {
   // Stop motor(s)
   sendThrottleCommand(brakeValue);
 
-  // Calculate variables
+  // Calculate global variables
   calculateGlobalVariables();
 
   // Setup the input pins for the buttons
