@@ -23,10 +23,9 @@ while Cruise Control is enabled, which results in the car continuing on its merr
 This software was developed to interface with several motor controllers. IF you can justify the extra money, I recommend using a General Purpose Motor Controller 
 as it makes the whole process much simpler.
 
-## Mobility scooter controllers that are tested to work with digital potentiometers
+## Mobility scooter controllers that have been tested AND WORK digital potentiometers
 1. Dynamic Controls R-Series
-2. PG Drives (Curtiss Wright)
-3. Some chinese controllers
+2. Some chinese controllers
 
 NOTE:
 1. If you find the motor controller on your donor mobility scooter does not work with digital potentiometers, you can use the wigwag from the mobility 
