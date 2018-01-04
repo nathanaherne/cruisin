@@ -53,9 +53,9 @@ CONFIGURATION FOR DIMENSION ENGINEERING SYREN50 MOTOR CONTROLLER
   #include <SoftwareSerial.h>
   
   // Throttle Values for Syren50 and Sabertooth2x32
-  const int throttleMin = -127;  // Syren32 minimum or Reverse value
-  const int brakeValue = 0; // Syren32 Brake value
-  const int throttleMax = 127; // Syren32 maximum or Forward value
+  const int throttleMin = -127;  // Syren50 minimum or Reverse value
+  const int brakeValue = 0; // Syren50 Brake value
+  const int throttleMax = 127; // Syren50 maximum or Forward value
   
   const int SwSerialTxPin = 11; // Pin used for Software Serial
   

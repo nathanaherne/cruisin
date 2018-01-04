@@ -64,6 +64,27 @@ you will need to remove the electronic brake attached to the end of the motor (u
 cut off all the propriatary plugs and connect the wires directly to the motor controller as per the controllers manual. If you are using the Sabertooth2x32,
 it has the ability to engage/disengage the electronic brake so you can leave it attached if you wish.
 
+# WIRING
+
+The software expects the following wiring (the Arduino pins can be changed in settings.h):
+
+1. Right button - digital pin 5 and GND on Arduino board (pushing the button grounds the pin)
+2. Left button - digital pin 7 and GND on Arduino board (pushing the button grounds the pin)
+
+If using Syren50 or Sabertooth2x32
+
+1. Serial TX (digital pin 11 on Arduino board) to S1 on motor controller
+2. 5v and Gnd on Arduino to 5v and 0v on motor controller
+
+If using digital poteniometer
+1. Digital pin 10 on Arduino board to (SS) or Chip Select pin on potentiometer chip,
+2. Digital pin 11 (or MOSI) on Arduino board to MOSI pin on potentiometer chip
+3. Digital pin 12 (or MISO) on Arduino board to MISO pin on potentiometer chip
+4. Digital pin 13 (or SCK) on Arduino board to SCK pin on potentiometer chip
+
+You will need to wire potentiometer HIGH and potentiometer signal and potentiometer LOW from the controller to
+the corresponding pins on the digital potentiometer.
+
 # CONFIGURATION
 
 You can configure this software in the settings.h file.
