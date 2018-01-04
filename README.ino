@@ -33,7 +33,7 @@ Some controllers use 0-12v, which creates problems for modern microcontrollers a
 Some controllers do not work with digital potentiometers which results in you not being able to control the speed programatically. 
 The contollers that do not work or intermittantly work are
 1. Dyanmic Controls Rhino - Blue in color
-2. PH Drives Solo - Black or Silver version
+2. PG Drives Solo - Black and Silver versions
 
 In my experience, Dynamic Controls support are much easier to work with than PG Drives (owned by Curtis Wright) support. Both companies Support people respond 
 very quickly but PG Drives are seem reluctant to provide much technical support. Dynamic Controls on the other hand provide full technical manuals for their contollers.
