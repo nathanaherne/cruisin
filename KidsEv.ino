@@ -6,11 +6,11 @@ Options are:
  3. Syren50 - Dimension Engineering Syren50 motor controller
  4. Sabertooth2x32 - Dimension Engineering Sabertooth 2x32 motor controller
 */
-#define SpiPot5v
+#define Sabertooth2x32
 /*********************************************************************/
 
 // Turn on/off debugging output
-#define Debug
+//#define Debug
 /*********************************************************************/
 
 // Other settings
@@ -23,7 +23,7 @@ void setup() {
     SPI.begin();
   #endif
 
-  #ifdef Syren50
+  #if defined(Syren50) || defined(Sabertooth2x32)
     pinMode(SwSerialTxPin, OUTPUT);
     SabertoothSWSerial.begin(9600);
     ST.setTimeout(deControllerTimeout); // Controller must recieve commands every X milliseconds or it will stop motors
@@ -340,10 +340,13 @@ void sendThrottleCommand(int currentThrottle) {
   SpiPot5vWrite(currentThrottle);
 #endif
 
-#if defined(Syren50) || defined(Sabertooth2x32)
-  DeControllerThrottle(currentThrottle);
+#if defined(Syren50)
+  Syren50Throttle(currentThrottle);
 #endif
-  
+
+#if defined(Sabertooth2x32)
+  Sabertooth2x32Throttle(currentThrottle);
+#endif
 }
 
 #ifdef SpiPot5v
@@ -368,9 +371,19 @@ void SpiPot12vWrite(int currentThrottle) {
 
 #if defined(Syren50)
 // Code to control a Dimension Engineering motor controller
-void DeControllerThrottle(int currentThrottle){
+void Syren50Throttle(int currentThrottle){
 
   ST.motor(1, currentThrottle);
+  
+}
+#endif
+
+#if defined(Sabertooth2x32)
+// Code to control a Dimension Engineering motor controller
+void Sabertooth2x32Throttle(int currentThrottle){
+
+  ST.motor(1, currentThrottle);
+  ST.motor(2, -currentThrottle);
   
 }
 #endif

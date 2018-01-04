@@ -23,7 +23,7 @@ while Cruise Control is enabled, which results in the car continuing on its merr
 This software was developed to interface with several motor controllers. IF you can justify the extra money, I recommend using a General Purpose Motor Controller 
 as it makes the whole process much simpler.
 
-## Mobility scooter controllers that have been tested AND WORK digital potentiometers
+## Mobility scooter controllers that have been tested (7 controllers tested do far) AND WORK digital potentiometers
 1. Dynamic Controls R-Series
 2. Some chinese controllers
 
@@ -35,7 +35,7 @@ Motor scooter controllers usually have a features you do not see in general moto
 1. Potentiometer control of speed (5v, 12v)
 2. Electronic braking system
 3. Features only available via the propriatary programmer
-4. Requires a 24v sealed lead acid battery
+4. Requires a 24v battery, a lower volt battery will result in the contoller not working.
 
 The input for speed control on these controllers expect a voltage range between 0-5v, where 0v is full reverse, 2.5v is stop and 5v is full forward.
 Some controllers use 0-12v, which creates problems for modern microcontrollers and digital potentiometers (most use 5v). 
