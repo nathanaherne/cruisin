@@ -28,18 +28,26 @@ Motor scooter controllers usually have a features you do not see in general moto
 4. Requires a 24v sealed lead acid battery
 
 The input for speed control on these controllers expect a voltage range between 0-5v, where 0v is full reverse, 2.5v is stop and 5v is full forward.
-Some controllers use 0-12v, which creates problems for modern microcontrollers and digital potentiometers (most use 5v). Some controllers use a 
-weird hybrid of potentiometer and resistive/capacitive monitoring (Dyanmic Controls Rhino is one such controller), which results in them being unable
-to be controlled via digital potentiometer (you must use a WigWag).
+Some controllers use 0-12v, which creates problems for modern microcontrollers and digital potentiometers (most use 5v). 
+
+Some controllers do not work with digital potentiometers which results in you not being able to control the speed programatically. 
+The contollers that do not work or intermittantly work are
+1. Dyanmic Controls Rhino - Blue in color
+2. PH Drives Solo - Black or Silver version
+
+In my experience, Dynamic Controls support are much easier to work with than PG Drives (owned by Curtis Wright) support. Both companies Support people respond 
+very quickly but PG Drives are seem reluctant to provide much technical support. Dynamic Controls on the other hand provide full technical manuals for their contollers.
+When using either companies controllers, make sure you keep all the original electronics from your donor mobility scooter. This will allow you to get status indications
+from the controllers and determine the wiring the controller expects to see.
 
 ## General purpose motor controllers
 1. Dimension Engineering Syren50 (single motor control)
 2. Dimension Engineering Sabertooth2x32 (dual motor control)
 
 General purpose motor controllers are much easier to use in these applications because everything can be done in code. If you are using the Syren50
-you need to remove the electronic brake attached to the end of the motor (unless you implement control of the brake using a separate piece of hardware), 
-cut off all the propriatary plugs and connect the wires directly to the motor controller as per its instructions. If you are using the Sabertooth2x32,
-it has the ability to engage/disengage the electronic brake.
+you will need to remove the electronic brake attached to the end of the motor (unless you implement control of the brake using a separate piece of hardware), 
+cut off all the propriatary plugs and connect the wires directly to the motor controller as per the controllers manual. If you are using the Sabertooth2x32,
+it has the ability to engage/disengage the electronic brake so you can leave it attached if you wish.
 
 # CONFIGURATION
 

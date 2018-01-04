@@ -10,10 +10,10 @@ Options are:
 /*********************************************************************/
 
 // Reverse motor direction
-boolean reverseMotorDirection = 1; //1 = true, 0 = false
+boolean reverseMotorDirection = 0; //1 = true, 0 = false
 
 // Turn on/off debugging output
-//#define Debug
+#define Debug
 
 // Enable/Disable Cruise Control
 boolean enableCruiseControl = 1;
@@ -80,8 +80,8 @@ CONFIGURATION FOR DIMENSION ENGINEERING SYREN50 MOTOR CONTROLLER
 ***************************************************************************************************************************************/
 
 // Momentary button input pins
-const int rightButton = 7; // right momentary button pin
-const int leftButton = 5; // left momentary button pin
+const int rightButton = 5; // right momentary button pin
+const int leftButton = 7; // left momentary button pin
 
 int maxForward;
 int maxReverse;

@@ -15,15 +15,15 @@ void setup() {
     ST.autobaud();
   #endif
 
+  // Stop motor(s)
+  sendThrottleCommand(brakeValue);
+
   // Calculate variables
   calculateGlobalVariables();
 
   // Setup the input pins for the buttons
   pinMode(rightButton, INPUT_PULLUP);
   pinMode(leftButton, INPUT_PULLUP);
-  
-  // Stop motor(s)
-  sendThrottleCommand(brakeValue);
 
   #ifdef Debug
     // Configure serial port to send debugging information
@@ -149,22 +149,18 @@ int getButtons() {
 
   // Forward
   if (rightButtonValue == LOW && leftButtonValue == HIGH) {
-    //Serial.print("Forward");Serial.println();
     return 1;
   } 
   // Reverse - also disables cruise control
   else if (rightButtonValue == LOW && leftButtonValue == LOW) {
-    //Serial.print("Reverse");Serial.println();
     return 2;
   }
   // Cruise Control Disable
   else if (rightButtonValue == HIGH && leftButtonValue == LOW) {
-    //Serial.print("Cruise Control Disable");Serial.println();
     return 3;
   }  
   // Brake
   else {
-    //Serial.print("Brake");Serial.println();
     return 0;
   }
 }
@@ -271,7 +267,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   }
   // Brake
   else if ((motionCommanded == 0 || motionCommanded == 3) && currentThrottle == brakeValue) {
-    sendThrottleCommand(brakeValue); // Send BrakeValue to controller anyway as a keepalive for controllers that need it
+    //sendThrottleCommand(brakeValue); // Send BrakeValue to controller anyway as a keepalive for controllers that need it
     cruiseControlMillis = currentMillis;  // reset CruiseControlMillis counter
     
     #ifdef Debug
