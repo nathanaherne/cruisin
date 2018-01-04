@@ -58,10 +58,24 @@ This will allow you to get status indications from the controllers and determine
 1. Dimension Engineering Syren50 (single motor control)
 2. Dimension Engineering Sabertooth2x32 (dual motor control)
 
-General purpose motor controllers are much easier to use in these applications because everything can be done in code. If you are using the Syren50
-you will need to remove the electronic brake attached to the end of the motor (unless you implement control of the brake using a separate piece of hardware), 
-cut off all the propriatary plugs and connect the wires directly to the motor controller as per the controllers manual. If you are using the Sabertooth2x32,
-it has the ability to engage/disengage the electronic brake so you can leave it attached if you wish.
+General purpose motor controllers are much easier to use in these applications because everything can be done in code. 
+
+### Syren50
+Mobility scooters can have one motor with a physical differential or two motors, one motor per wheel. The Syren50 will work with both types. To use
+the Syren50 with one motor, just wire it as per the manual. To use the Syren50 with two motors, you should wire the motors in series so that you get
+an electronic differential.
+
+NOTE: To use the Syren50 with a mobility scooter you will need to
+1. remove the electronic brake attached to the end of the motor (unless you implement control of the brake using a separate piece of hardware). 
+2. Cut off all propriatary plugs and connect the correct wires directly to the motor controller as per the Syren50's manual.
+
+### Sabertooth2x32
+The Sabertooth2x32 has the ability to control two electric motors (among a number of other features). This software has been designed to support
+the Sabertooth2x32. The main isssue with using the Sabertooth2x32 with two rear motors is there will be no differential. I do not think it is a 
+great idea to use the Sabertooth2x32 for two motors, even though it is possible. The Sabertooth2x32 is useful for people who would like to use
+it to control an electronic brake, though at this time, I have yet to implement or test this functionality.
+
+The Sabertooth 2x32 has the ability to engage/disengage the electronic brake so you can leave it attached if you wish.
 
 # WIRING
 
