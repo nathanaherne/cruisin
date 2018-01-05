@@ -6,11 +6,11 @@ Options are:
  3. Syren50 - Dimension Engineering Syren50 motor controller
  4. Sabertooth2x32 - Dimension Engineering Sabertooth 2x32 motor controller
 */
-#define Sabertooth2x32
+#define Syren50
 /*********************************************************************/
 
 // Turn on/off debugging output
-//#define Debug
+#define Debug
 /*********************************************************************/
 
 // Other settings
@@ -68,10 +68,10 @@ void setup() {
     Serial.print("Reverse Ramp Percent: ");Serial.print(reverseRampPercent);Serial.print("%");Serial.println();
     Serial.print("Reverse Ramp Inverval: ");Serial.print(reverseRampInterval);Serial.print(" milliseconds");Serial.println();
     Serial.print("--------------------------------------------");Serial.println();
-    Serial.print("Maximum Cruise Control Throttle Percent: ");Serial.print(maxCruiseControlForwardPercent);Serial.print("%");Serial.println();
-    Serial.print("Maximum Cruise Control Throttle Output: ");Serial.print(maxCruiseControlForward);Serial.println();
-    Serial.print("Cruise Control Ramp Percent: ");Serial.print(cruiseControlForwardRampPercent);Serial.print("%");Serial.println();
-    Serial.print("CruiseControl Ramp Inverval: ");Serial.print(cruiseControlForwardRampInterval);Serial.print(" milliseconds");Serial.println();
+    Serial.print("Maximum Cruise Control Throttle Percent: ");Serial.print(maxCruiseControlPercent);Serial.print("%");Serial.println();
+    Serial.print("Maximum Cruise Control Throttle Output: ");Serial.print(maxCruiseControl);Serial.println();
+    Serial.print("Cruise Control Ramp Percent: ");Serial.print(cruiseControlRampPercent);Serial.print("%");Serial.println();
+    Serial.print("CruiseControl Ramp Inverval: ");Serial.print(cruiseControlRampInterval);Serial.print(" milliseconds");Serial.println();
     Serial.print("--------------------------------------------");Serial.println();
     Serial.print("Brake Value: ");Serial.print(brakeValue);Serial.println();
     Serial.print("Brake Ramp Percent: ");Serial.print(brakeRampPercent);Serial.print("%");Serial.println();
@@ -104,18 +104,18 @@ void calculateGlobalVariables(){
   
   // Calculation for maxCCForward
   if (reverseMotorDirection) {
-    maxCruiseControlForward = brakeValue - (((brakeValue - throttleMin) * maxCruiseControlForwardPercent) / 100); //Based on maxCruiseControlForwardPercent & Throttle Output Value settings
+    maxCruiseControl = brakeValue - (((brakeValue - throttleMin) * maxCruiseControlPercent) / 100); //Based on maxCruiseControlPercent & Throttle Output Value settings
   } else if (!reverseMotorDirection) {
-    maxCruiseControlForward = brakeValue + (((throttleMax - brakeValue) * maxCruiseControlForwardPercent) / 100); // Based on maxCruiseControlForwardPercent & Throttle Output Value settings
+    maxCruiseControl = brakeValue + (((throttleMax - brakeValue) * maxCruiseControlPercent) / 100); // Based on maxCruiseControlPercent & Throttle Output Value settings
   } else {
-    maxCruiseControlForward = brakeValue;
+    maxCruiseControl = brakeValue;
   }
 
   // Calculations for ramp intervals
   forwardRampInterval = (forwardRampPercent * 100) / 100; // milliseconds between Forward updates
   reverseRampInterval = (reverseRampPercent * 100) / 100; // milliseconds between Reverse updates
   brakeRampInterval =  (brakeRampPercent * 100) / 100; // milliseconds between Reverse updates
-  cruiseControlForwardRampInterval = (cruiseControlForwardRampPercent * 100) / 100; // milliseconds between Reverse updates
+  cruiseControlRampInterval = (cruiseControlRampPercent * 100) / 100; // milliseconds between Reverse updates
   
 }
 
@@ -134,7 +134,7 @@ void loop() {
   static boolean cruiseControlOn = 0; // 1 = true, 0 = false
   static unsigned long cruiseControlMillis = 0; // the first time Forward first commanded
   static unsigned long previousCruiseControlRampMillis = 0; // the last time Cruise Control speed was updated
-  static int cruiseControlForwardWaitMs = cruiseControlForwardWaitSec * 1000; // convert Seconds to Ms
+  static int cruiseControlWaitMs = cruiseControlWaitSec * 1000; // convert Seconds to Ms
   static int cruiseControlRightButtonDisableDelayMs = cruiseControlRightButtonDisableDelaySec * 1000; // convert Seconds to Ms
   // End Variable Declarations
   
@@ -145,14 +145,15 @@ void loop() {
 
   // If Cruise Control has been enabled, then calculate if it should be on
   if (enableCruiseControl) {
-    cruiseControlOn = calcCruiseControl(motionCommanded, currentMillis, cruiseControlMillis, cruiseControlForwardWaitMs, cruiseControlOn, cruiseControlRightButtonDisableDelayMs);
+    calcCruiseControl(motionCommanded, cruiseControlOn, currentMillis, cruiseControlMillis, previousForwardRampMillis, 
+        cruiseControlWaitMs, cruiseControlRightButtonDisableDelayMs);
   }
 
   // Calculate motion from button states and other details
   calcMotion(motionCommanded, cruiseControlOn, currentThrottle, currentMillis, 
       maxForward, previousForwardRampMillis, forwardRampInterval,
       maxReverse, previousReverseRampMillis, reverseRampInterval,
-      maxCruiseControlForward, previousCruiseControlRampMillis, cruiseControlForwardRampInterval, cruiseControlMillis,
+      maxCruiseControl, previousCruiseControlRampMillis, cruiseControlRampInterval, cruiseControlMillis,
       brakeValue, previousBrakeRampMillis, brakeRampInterval);
   
 }
@@ -181,30 +182,36 @@ int getButtons() {
   }
 }
 
-boolean calcCruiseControl(int motionCommanded, unsigned long currentMillis, unsigned long cruiseControlMillis, int cruiseControlForwardWaitMs, 
-          boolean cruiseControlOn, int cruiseControlRightButtonDisableDelayMs) {
+void calcCruiseControl(int motionCommanded, boolean &cruiseControlOn, unsigned long currentMillis, unsigned long previousForwardRampMillis, 
+          unsigned long &cruiseControlMillis, int cruiseControlWaitMs, int cruiseControlRightButtonDisableDelayMs) {
 
-  // Check to see if Forward has been commanded for more than CruiseControlForwardInterval
-  if (motionCommanded == 1 && !cruiseControlOn && currentMillis - cruiseControlMillis >= cruiseControlForwardWaitMs) {
+  // Check to see if Forward has been commanded for more than CruiseControlWaitMs
+  if (motionCommanded == 1 && !cruiseControlOn && (cruiseControlMillis != 0 && currentMillis - cruiseControlMillis >= cruiseControlWaitMs)) {
     cruiseControlOn = 1;
-    cruiseControlMillis = currentMillis;
     
     #ifdef Debug
-      Serial.print("CRUISE CONTROL ENABLED");Serial.println();
+      Serial.print("CRUISE CONTROL ENABLED");Serial.print("   ");
     #endif
   }
-
-  // Disable Cruise Control if actioned to be disabled OR cruiseControlRightButtonDisableDelayMs has elapsed
-  if (cruiseControlOn && (motionCommanded == 2 || motionCommanded == 3)) { // || (motionCommanded == 1 && cruiseControlMillis + cruiseControlRightButtonDisableDelayMs > currentMillis)
+  // Disable Cruise Control if actioned to be disabled
+  else if (cruiseControlOn && (motionCommanded == 2 || motionCommanded == 3)) {
     cruiseControlOn = 0;
+    cruiseControlMillis = 0;
     
     #ifdef Debug
-      Serial.print("CRUISE CONTROL DISABLED");Serial.println();
+      Serial.print("CRUISE CONTROL DISABLED");Serial.print("   ");
+    #endif
+  }
+  // Disable Cruise Control if cruiseControlOn, Forward commanded and cruiseControlRightButtonDisableDelayMs has elapsed
+  else if (cruiseControlOn && motionCommanded == 1 && currentMillis - (cruiseControlMillis + cruiseControlWaitMs) >= cruiseControlRightButtonDisableDelayMs) {
+    cruiseControlOn = 0;
+    cruiseControlMillis = 0;
+    
+    #ifdef Debug
+      Serial.print("CRUISE CONTROL DISABLED");Serial.print("   ");
     #endif
   }
 
-  return cruiseControlOn;
-  
 }
 
 void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrottle, unsigned long &currentMillis, 
@@ -224,6 +231,11 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
     Serial.print("Forward - ");
     #endif
     increaseThrottle(currentMillis, previousForwardRampMillis, forwardRampInterval, currentThrottle, maxForward);
+    // If the first time Forward commanded since last CruiseControlMillis reset update CruiseControlMillis
+    if (cruiseControlMillis == 0) {
+      cruiseControlMillis = millis();
+      Serial.print("Cruise Control Millis: ");Serial.print(cruiseControlMillis);Serial.print("   ");
+    }
   }
   // Forward commanded and reverseMotorDirection = true PLUS
   // cruiseControlOn = false -> forward is different to CruiseControl 
@@ -241,7 +253,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
     Serial.print("Reverse - ");
     #endif
     reduceThrottle(currentMillis, previousReverseRampMillis, reverseRampInterval, currentThrottle, maxReverse);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
+    cruiseControlMillis = 0; // reset CruiseControlMillis counter
   }
   // Reverse commanded and reverseMotorDirection = true  
   else if (motionCommanded == 2  && reverseMotorDirection && currentThrottle >= brakeValue) {
@@ -249,7 +261,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
     Serial.print("Reverse - ");
     #endif
     increaseThrottle(currentMillis, previousReverseRampMillis, reverseRampInterval, currentThrottle, maxReverse);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
+    cruiseControlMillis = 0; // reset CruiseControlMillis counter
   }
   // cruiseControlOn = true and reverseMotorDirection = false
   else if (cruiseControlOn && !reverseMotorDirection) {
@@ -271,7 +283,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
     Serial.print("Brake FP - ");
     #endif
     reduceThrottle(currentMillis, previousBrakeRampMillis, brakeRampInterval, currentThrottle, brakeValue);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
+    cruiseControlMillis = 0; // reset CruiseControlMillis counter
   }
   // Brake from Negative Throttle
   else if (!cruiseControlOn && currentThrottle < brakeValue) {
@@ -279,12 +291,12 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
     Serial.print("Brake FN - ");
     #endif
     increaseThrottle(currentMillis, previousBrakeRampMillis, brakeRampInterval, currentThrottle, brakeValue);
-    cruiseControlMillis = currentMillis; // reset CruiseControlMillis counter
+    cruiseControlMillis = 0; // reset CruiseControlMillis counter
   }
   // Brake
   else if ((motionCommanded == 0 || motionCommanded == 3) && currentThrottle == brakeValue) {
     //sendThrottleCommand(brakeValue); // Send BrakeValue to controller anyway as a keepalive for controllers that need it
-    cruiseControlMillis = currentMillis;  // reset CruiseControlMillis counter
+    cruiseControlMillis = 0;  // reset CruiseControlMillis counter
     
     #ifdef Debug
     Serial.print("Brake - ");Serial.print("throttle: ");Serial.print(currentThrottle);Serial.println();
