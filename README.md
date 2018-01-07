@@ -34,7 +34,7 @@ The negative of this is that these cars are very strong and have the ability to 
 
 This software was developed to interface with several motor controllers. IF you can justify the extra money, I recommend using a General Purpose Motor Controller as it makes the whole process much simpler.
 
-## Mobility scooter controllers that have been tested
+## Mobility scooter motor controllers that work with digital potentiometers
 
 I have tested 7 controllers so far and the following controllers work with digital potentiometers
 
@@ -52,7 +52,7 @@ If you find the motor controller from your donor mobility scooter will not work 
 
 The input for speed control on these controllers expect a voltage range between 0-5v, where 0v is full reverse, 2.5v is stop and 5v is full forward. I have seen some chinese controllers that require 0-12v, which creates problems for modern microcontrollers and digital potentiometers (most are maximum of 5v).
 
-### Controllers that do not work with digital potentiometers
+## Mobility scooter motor controllers that DO NOT work with digital potentiometers
 
 1. Dyanmic Controls Rhino - Blue in color (does not work)
 2. PG Drives Solo - Black and Silver versions (intermittantly)
