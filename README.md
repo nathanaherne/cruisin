@@ -50,12 +50,12 @@ If you find the motor controller from your donor mobility scooter will not work 
 3. Features only available via the propriatary programmer
 4. Requires a 24v battery, a lower voltage battery will result in the contoller not working.
 
-The input for speed control on these controllers expect a voltage range between 0-5v, where 0v is full reverse, 2.5v is stop and 5v is full forward. I have seen some controllers require 0-12v, which creates problems for modern microcontrollers and digital potentiometers (most are max 5v). 
+The input for speed control on these controllers expect a voltage range between 0-5v, where 0v is full reverse, 2.5v is stop and 5v is full forward. I have seen some chinese controllers that require 0-12v, which creates problems for modern microcontrollers and digital potentiometers (most are maximum of 5v).
 
 ### Controllers that do not work with digital potentiometers
-The contollers that do not work or intermittantly work are
-1. Dyanmic Controls Rhino - Blue in color (does not work with digital potentiometer)
-2. PG Drives Solo - Black and Silver versions (they sometimes work, sometimes not)
+
+1. Dyanmic Controls Rhino - Blue in color (does not work)
+2. PG Drives Solo - Black and Silver versions (intermittantly)
 
 In my experience, Dynamic Controls Support are easier to work with than PG Drives (owned by Curtiss Wright) Support. Both companies Support people respond very quickly but PG Drives seem reluctant to provide much technical information about their product. Dynamic Controls on the other hand post full technical manuals on the internet for their contollers.
 
