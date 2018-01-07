@@ -1,24 +1,9 @@
-/*********************************************************************
-MOTOR CONTROLLER OPTION
-Options are:
- 1. SpiPot5v - Mobility scooter controller with 5v Pot
- 2. SpiPot12v - Mobility scooter controller with 12v Pot
- 3. Syren50 - Dimension Engineering Syren50 motor controller
- 4. Sabertooth2x32 - Dimension Engineering Sabertooth 2x32 motor controller
-*/
-#define Syren50
-/*********************************************************************/
-
-// Turn on/off debugging output
-#define Debug
-/*********************************************************************/
-
-// Other settings
+// Settings File
 #include "settings.h"
 
 void setup() {
 
-  #ifdef SpiPot5v
+  #ifdef MCP4XXX
     pinMode (CS, OUTPUT);
     SPI.begin();
   #endif
@@ -41,7 +26,7 @@ void setup() {
   pinMode(rightButton, INPUT_PULLUP);
   pinMode(leftButton, INPUT_PULLUP);
 
-  #ifdef Debug
+  #if defined(Debug)
     // Configure serial port to send debugging information
     Serial.begin(9600);
     // Print some information to the Serial Port
@@ -140,10 +125,9 @@ void loop() {
   
   currentMillis = millis(); // Update currentMillis every loop
   
-  // Get the button combinations pressed (e.g. forward/reverse/brake)
-  motionCommanded = getButtons();
+  getButtons(motionCommanded); // Get the button combinations pressed (e.g. forward/reverse/brake)
 
-  // If Cruise Control has been enabled, then calculate if it should be on
+  // Calculate if CruiseControl should be on
   if (enableCruiseControl) {
     calcCruiseControl(motionCommanded, cruiseControlOn, currentMillis, cruiseControlMillis, previousForwardRampMillis, 
         cruiseControlWaitMs, cruiseControlRightButtonDisableDelayMs);
@@ -158,27 +142,31 @@ void loop() {
   
 }
 
-// Calculates action based on button states
-int getButtons() {
+// Returns button states
+int getButtons(int &motion) {
 
   boolean rightButtonValue = digitalRead(rightButton);
   boolean leftButtonValue = digitalRead(leftButton);
 
+  // Brake
+  if (rightButtonValue == HIGH && leftButtonValue == HIGH) {
+    motion = 0;
+  } 
   // Forward
-  if (rightButtonValue == LOW && leftButtonValue == HIGH) {
-    return 1;
+  else if (rightButtonValue == LOW && leftButtonValue == HIGH) {
+    motion = 1;
   } 
   // Reverse - also disables cruise control
   else if (rightButtonValue == LOW && leftButtonValue == LOW) {
-    return 2;
+    motion = 2;
   }
   // Cruise Control Disable
   else if (rightButtonValue == HIGH && leftButtonValue == LOW) {
-    return 3;
-  }  
-  // Brake
+    motion = 3;
+  } 
+  // If all else fails, then brake
   else {
-    return 0;
+    motion = 0;
   }
 }
 
@@ -189,16 +177,16 @@ void calcCruiseControl(int motionCommanded, boolean &cruiseControlOn, unsigned l
   if (motionCommanded == 1 && !cruiseControlOn && (cruiseControlMillis != 0 && currentMillis - cruiseControlMillis >= cruiseControlWaitMs)) {
     cruiseControlOn = 1;
     
-    #ifdef Debug
+    #if defined(Debug)
       Serial.print("CRUISE CONTROL ENABLED");Serial.print("   ");
     #endif
   }
-  // Disable Cruise Control if actioned to be disabled
+  // Disable Cruise Control if Brake or Reverse is commanded
   else if (cruiseControlOn && (motionCommanded == 2 || motionCommanded == 3)) {
     cruiseControlOn = 0;
     cruiseControlMillis = 0;
     
-    #ifdef Debug
+    #if defined(Debug)
       Serial.print("CRUISE CONTROL DISABLED");Serial.print("   ");
     #endif
   }
@@ -207,7 +195,7 @@ void calcCruiseControl(int motionCommanded, boolean &cruiseControlOn, unsigned l
     cruiseControlOn = 0;
     cruiseControlMillis = 0;
     
-    #ifdef Debug
+    #if defined(Debug)
       Serial.print("CRUISE CONTROL DISABLED");Serial.print("   ");
     #endif
   }
@@ -220,14 +208,14 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
       int maxCruiseControlForward, unsigned long &previousCruiseControlRampMillis, int cruiseControlForwardRampInterval, unsigned long &cruiseControlMillis,
       int brakeValue, unsigned long &previousBrakeRampMillis, int brakeRampInterval) {
 
-  int throttle = currentThrottle;
+  //int throttle = currentThrottle;
 
   // Forward commanded and reverseMotorDirection = false PLUS
   // cruiseControlOn = false -> forward is different to CruiseControl 
   // currentThrottle >= brakeValue -> when going from reverse to forward, brakeRampInterval unsed until currentThrottle = brakeValue 
   // currentThrottle <= maxForward -> if forward commanded BEFORE throttle is below maxForward then vehicle must be braked first
   if (motionCommanded == 1 && !cruiseControlOn && !reverseMotorDirection && currentThrottle >= brakeValue && currentThrottle <= maxForward + 1) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Forward - ");
     #endif
     increaseThrottle(currentMillis, previousForwardRampMillis, forwardRampInterval, currentThrottle, maxForward);
@@ -242,14 +230,14 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   // currentThrottle >= brakeValue -> when going from reverse to forward, brakeRampInterval unsed until currentThrottle = brakeValue 
   // currentThrottle <= maxForward -> if forward commanded BEFORE throttle is below maxForward then vehicle must be braked first
   else if (motionCommanded == 1 && !cruiseControlOn && reverseMotorDirection && currentThrottle <= brakeValue && currentThrottle >= maxForward - 1) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Forward - ");
     #endif
     reduceThrottle(currentMillis, previousForwardRampMillis, forwardRampInterval, currentThrottle, maxForward);
   }
   // Reverse commanded and reverseMotorDirection = false
   else if (motionCommanded == 2  && !reverseMotorDirection && currentThrottle <= brakeValue) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Reverse - ");
     #endif
     reduceThrottle(currentMillis, previousReverseRampMillis, reverseRampInterval, currentThrottle, maxReverse);
@@ -257,7 +245,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   }
   // Reverse commanded and reverseMotorDirection = true  
   else if (motionCommanded == 2  && reverseMotorDirection && currentThrottle >= brakeValue) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Reverse - ");
     #endif
     increaseThrottle(currentMillis, previousReverseRampMillis, reverseRampInterval, currentThrottle, maxReverse);
@@ -265,21 +253,21 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   }
   // cruiseControlOn = true and reverseMotorDirection = false
   else if (cruiseControlOn && !reverseMotorDirection) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Cruise Control - ");
     #endif
     increaseThrottle(currentMillis, previousCruiseControlRampMillis, cruiseControlForwardRampInterval, currentThrottle, maxCruiseControlForward);
   }
   // cruiseControlOn = true and reverseMotorDirection = true
   else if (cruiseControlOn && reverseMotorDirection) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Cruise Control - ");
     #endif
     reduceThrottle(currentMillis, previousCruiseControlRampMillis, cruiseControlForwardRampInterval, currentThrottle, maxCruiseControlForward);
   }
   // Brake from Positive Throttle
   else if (!cruiseControlOn && currentThrottle > brakeValue) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Brake FP - ");
     #endif
     reduceThrottle(currentMillis, previousBrakeRampMillis, brakeRampInterval, currentThrottle, brakeValue);
@@ -287,7 +275,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   }
   // Brake from Negative Throttle
   else if (!cruiseControlOn && currentThrottle < brakeValue) {
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Brake FN - ");
     #endif
     increaseThrottle(currentMillis, previousBrakeRampMillis, brakeRampInterval, currentThrottle, brakeValue);
@@ -298,7 +286,7 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
     //sendThrottleCommand(brakeValue); // Send BrakeValue to controller anyway as a keepalive for controllers that need it
     cruiseControlMillis = 0;  // reset CruiseControlMillis counter
     
-    #ifdef Debug
+    #if defined(Debug)
     Serial.print("Brake - ");Serial.print("throttle: ");Serial.print(currentThrottle);Serial.println();
     #endif
   }
@@ -317,11 +305,9 @@ void increaseThrottle(unsigned long currentMillis, unsigned long &previousMillis
   // Send throttle command even if there is no update -> in essence a keepalive for the motor controller
   sendThrottleCommand(currentThrottle);
   
-  #ifdef Debug
+  #if defined(Debug)
     Serial.print("throttle: ");Serial.print(currentThrottle);Serial.println();
   #endif
-
-  //return previousMillis;
 
 }
 
@@ -337,18 +323,16 @@ void reduceThrottle(unsigned long currentMillis, unsigned long &previousMillis, 
   // Send throttle command even if there is no update -> in essence a keepalive for the motor controller
   sendThrottleCommand(currentThrottle);
   
-  #ifdef Debug
+  #if defined(Debug)
     Serial.print("throttle: ");Serial.print(currentThrottle);Serial.println();
   #endif
-
-  //return previousMillis;
 
 }
 
 // Send Throttle Command to the motor controller
 void sendThrottleCommand(int currentThrottle) {
 
-#if defined(SpiPot5v)
+#if defined(MCP4XXX)
   SpiPot5vWrite(currentThrottle);
 #endif
 
@@ -361,19 +345,9 @@ void sendThrottleCommand(int currentThrottle) {
 #endif
 }
 
-#ifdef SpiPot5v
+#ifdef MCP4XXX
 // Code to control a MCP4151 digital potentiometer via SPI
 void SpiPot5vWrite(int currentThrottle) {
-  digitalWrite(CS, LOW);
-  SPI.transfer(address);
-  SPI.transfer(currentThrottle);
-  digitalWrite(CS, HIGH);
-}
-#endif
-
-#ifdef SpiPot12v
-// Code to control a MCP4151 digital potentiometer via SPI
-void SpiPot12vWrite(int currentThrottle) {
   digitalWrite(CS, LOW);
   SPI.transfer(address);
   SPI.transfer(currentThrottle);

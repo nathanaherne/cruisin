@@ -1,21 +1,36 @@
+/*********************************************************************
+MOTOR CONTROLLER OPTIONS
+Options are:
+ 1. MCP4XXX - Mobility scooter controller or controller that requires an MCP4XXX family digital potentiometer
+ 2. SpiPot12v - ToDo
+ 3. Syren50 - Dimension Engineering Syren50 motor controller
+ 4. Sabertooth2x32 - Dimension Engineering Sabertooth 2x32 motor controller
+*/
+#define MCP4XXX
+/*********************************************************************/
+
+// Turn on/off debugging output - turn off when not being used as it increases the code timings
+//#define Debug
+/*********************************************************************/
+
 // Reverse motor direction
-boolean reverseMotorDirection = 0; // 1 = true, 0 = false
+boolean reverseMotorDirection = 1; // 1 = true, 0 = false
 
 // Enable/Disable Cruise Control
-boolean enableCruiseControl = 1;
+boolean enableCruiseControl = true;
 
 // Speed and Acceleration settings
-int maxForwardPercent = 60; // Maximum forward throttle (percentage)
+int maxForwardPercent = 67; // Maximum forward throttle (percentage)
 int forwardRampPercent = 50; // Forward acceleration percent -> larger value = slower acceleration
 
-int maxReversePercent = 30; // Maximum reverse throttle (percentage)
+int maxReversePercent = 60; // Maximum reverse throttle (percentage)
 int reverseRampPercent = 50; // Reverse acceleration percent -> larger value = slower acceleration
 
 int brakeRampPercent = 15; // Brake acceleration percent -> larger value = slower acceleration
 
 int maxCruiseControlPercent = 70; // Maximum Cruise Control forward throttle (percentage)
 int cruiseControlRampPercent = 50; // Cruise Control acceleration speed (milliseconds), larger value = slower acceleration
-int cruiseControlWaitSec = 5; // Seconds Forward must be commanded for Cruise Control to activate (1000ms = 1 second)
+int cruiseControlWaitSec = 30; // Seconds Forward must be commanded for Cruise Control to activate (1000ms = 1 second)
 int cruiseControlRightButtonDisableDelaySec = 5; // Seconds after CruiseControl enabled before Right momentary button CAN disable it
 
 /***************************************************************************************************************************************
@@ -25,7 +40,7 @@ int cruiseControlRightButtonDisableDelaySec = 5; // Seconds after CruiseControl 
 /**********************************************************************************************************************
 CONFIGURATION FOR 5V DIGITAL POTENTIOMETER VIA SPI
 **********************************************************************************************************************/
-#ifdef SpiPot5v
+#if defined(MCP4XXX)
 
   // Interface with digital potentiometer via SPI
   #include <SPI.h>
@@ -70,8 +85,8 @@ CONFIGURATION FOR DIMENSION ENGINEERING SYREN50 MOTOR CONTROLLER
 ***************************************************************************************************************************************/
 
 // Momentary button input pins
-const int rightButton = 5; // right momentary button pin
-const int leftButton = 7; // left momentary button pin
+const int rightButton = 7; // right momentary button pin
+const int leftButton = 5; // left momentary button pin
 
 int maxForward;
 int maxReverse;
