@@ -8,18 +8,18 @@ that is entirely on you.
 -------------------------------------------------------------------------------------------------------
 # OVERVIEW
 
-This software was developed for Arduino to convert a mobility scooter into an electric car for a child.
+This software was developed for [Teensy](https://www.pjrc.com/teensy/) to be the brain of a simple electric vehicle. 
 
-This software was developed to take input from two momentary switches (buttons) (named Right and Left) and translate button pushes into motion.
+The software was initially written to allow me to convert a mobility scooter into an electric car for a child.
 
-- Pressing the Right button, results in the car moving forwards
-- Pressing both the Right and Left buttons, results in the car moving reverse
-- Holding the Right button for longer than 30 seconds, results in CruiseControl being enabled (car moves forward without input)
-- When Cruise Control is enabled pressing the Left (at any time) or Right (5 seconds after Cruise Control is enabled) button disables Cruise Control and the car will brake
-- Pressing no buttons results in the car stopping (unless Cruise Control is enabled)
+This software was developed to take an external input (from the person controlling it) and convert that into an output.
 
-## WARNING ON CRUISE CONTROL
-This software has a feature called Cruise Control (enabled by default can be disabled) which results in the Arduino holding full throttle without input after Forward has been commanded a set amount of time (default 30 seconds but can be changed). Cruise Control was implemented 
+Currently the input option is from two momentary switches (buttons) (named Right and Left), which can be translated into an output. The input to output mapping can be controlled in [settings.h]
+
+# WARNINGS
+
+## CRUISE CONTROL
+This software has a feature called Cruise Control (enabled by default, can be disabled) which results in the Arduino holding full throttle without input after Forward has been commanded a set amount of time (default 30 seconds but can be changed). Cruise Control was implemented 
 because the children I created these cars for (7 families in our neighborhood so far) complained that pushing the button for long periods of time hurt their finger (I believe they pushed harder thinking they would go faster). Cruise Control can have an unintended side effect (which has happened to one of the very young children) where the child falls off the car while Cruise Control is enabled, which results in the car continuing on its merry way without a driver.
 
 ## WARNING ON USING MOBILITY SCOOTERS AS KIDS CARS
@@ -63,7 +63,7 @@ In my experience, Dynamic Controls Support are easier to work with than PG Drive
 1. When using any mobility scooter controller, make sure you keep all the original electronics from your donor mobility scooter. This will allow you to get status indications from the controllers and determine the wiring the controller expects to see.
 2. Having a multimeter will help immensely to work out expected wiring when using a mobility scooter motor controller.
 
-## General purpose motor controllers
+## General purpose controllers -> Brushed
 
 1. Dimension Engineering Syren50 (single motor control)
 2. Dimension Engineering Sabertooth2x32 (dual motor control)
@@ -134,4 +134,4 @@ You can also configure acceleration (for Forward/Reverse/Cruisecontrol) and dece
 
 # TECHNICAL NOTES
 
-The software has been written with the intention of it being readable more than technically code efficient.
+The software has been written with the intention of it being readable more than code efficient.

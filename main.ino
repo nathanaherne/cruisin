@@ -1,106 +1,42 @@
-// Settings File
-#include "settings.h"
+#include "pins.h" // pins file
+#include "settings.h" // Settings file
+#include "globals.h" // Global variables
+#include "configPeripherals.h" // Peripheral configuration file
 
 void setup() {
 
-  #ifdef MCP4XXX
-    pinMode (CS, OUTPUT);
-    SPI.begin();
-  #endif
+  // Set all as error and unset if no error
+  boolean manualControlError = 1;
+  boolean pwmAndPpmError = 1;
+  boolean noInputError = 1;
+  boolean noMotorOutputError = 1;
 
-  #if defined(Syren50) || defined(Sabertooth2x32)
-    pinMode(SwSerialTxPin, OUTPUT);
-    SabertoothSWSerial.begin(9600);
-    ST.setTimeout(deControllerTimeout); // Controller must recieve commands every X milliseconds or it will stop motors
-    ST.setRamping(0);
-    ST.autobaud();
-  #endif
+  // Setup enabled peripherals
+  setupPeripherals();
 
   // Stop motor(s)
   sendThrottleCommand(brakeValue);
 
+  // Check if vehicle is moving -> brake value incorrect
+
   // Calculate global variables
   calculateGlobalVariables();
 
-  // Setup the input pins for the buttons
-  pinMode(rightButton, INPUT_PULLUP);
-  pinMode(leftButton, INPUT_PULLUP);
+  // Validate Manual Control Configuration
+  validateManualControlConfig(manualControlError);
+
+  // Validate Peripheral Config
+  validatePeripheralConfig(pwmAndPpmError, noInputError, noMotorOutputError);
+
+  // Check if ERROR
+  isError(manualControlError, noInputError, pwmAndPpmError, noMotorOutputError);
+
+  // Setup Input pins
+  setupPins();
 
   #if defined(Debug)
-    // Configure serial port to send debugging information
-    Serial.begin(9600);
-    // Print some information to the Serial Port
-    Serial.println();
-    Serial.print("******************************************************************************************");Serial.println();
-      if (reverseMotorDirection) {
-        Serial.print("Motor Direction Reversed: ");Serial.print("True");Serial.println();
-      } else {
-        Serial.print("Motor Direction Reversed: ");Serial.print("False");Serial.println();
-      }
-      if (enableCruiseControl) {
-        Serial.print("Cruise Control Enabled: ");Serial.print("True");Serial.println();
-      } else {
-        Serial.print("Cruise Control Enabled: ");Serial.print("False");Serial.println();
-      }
-    Serial.print("--------------------------------------------");Serial.println();
-    Serial.print("Maximum Forward Throttle Percent: ");Serial.print(maxForwardPercent);Serial.print("%");Serial.println();
-    Serial.print("Maximum Forward Throttle Output: ");Serial.print(maxForward);Serial.println();
-    Serial.print("Forward Ramp Percent: ");Serial.print(forwardRampPercent);Serial.print("%");Serial.println();
-    Serial.print("Forward Ramp Inverval: ");Serial.print(forwardRampInterval);Serial.print(" milliseconds");Serial.println();
-    Serial.print("--------------------------------------------");Serial.println();
-    Serial.print("Maximum Reverse Throttle Percent: ");Serial.print(maxReversePercent);Serial.print("%");Serial.println();
-    Serial.print("Maximum Reverse Throttle Output: ");Serial.print(maxReverse);Serial.println();
-    Serial.print("Reverse Ramp Percent: ");Serial.print(reverseRampPercent);Serial.print("%");Serial.println();
-    Serial.print("Reverse Ramp Inverval: ");Serial.print(reverseRampInterval);Serial.print(" milliseconds");Serial.println();
-    Serial.print("--------------------------------------------");Serial.println();
-    Serial.print("Maximum Cruise Control Throttle Percent: ");Serial.print(maxCruiseControlPercent);Serial.print("%");Serial.println();
-    Serial.print("Maximum Cruise Control Throttle Output: ");Serial.print(maxCruiseControl);Serial.println();
-    Serial.print("Cruise Control Ramp Percent: ");Serial.print(cruiseControlRampPercent);Serial.print("%");Serial.println();
-    Serial.print("CruiseControl Ramp Inverval: ");Serial.print(cruiseControlRampInterval);Serial.print(" milliseconds");Serial.println();
-    Serial.print("--------------------------------------------");Serial.println();
-    Serial.print("Brake Value: ");Serial.print(brakeValue);Serial.println();
-    Serial.print("Brake Ramp Percent: ");Serial.print(brakeRampPercent);Serial.print("%");Serial.println();
-    Serial.print("Brake Ramp Interval: ");Serial.print(brakeRampInterval);Serial.print(" milliseconds");Serial.println();
-    Serial.print("******************************************************************************************");Serial.println();
-    delay(500);
+    startupDebug();
   #endif
-  
-}
-
-void calculateGlobalVariables(){
-  
-  // Calculations for maxForward
-  if (reverseMotorDirection) {
-    maxForward = brakeValue - (((brakeValue - throttleMin) * maxForwardPercent) / 100); // Based on maxForwardPercent & Throttle Output Value settings
-  } else if (!reverseMotorDirection) {
-    maxForward = brakeValue + (((throttleMax - brakeValue) * maxForwardPercent) / 100); // Based on maxForwardPercent & Throttle Output Value settings
-  } else {
-    maxForward = brakeValue;
-  }
-  
-  // Calculation for maxReverse
-  if (reverseMotorDirection) {
-    maxReverse = brakeValue + (((throttleMax - brakeValue) * maxReversePercent) / 100); // Based on maxReversePercent & Throttle Output Value settings
-  } else if (!reverseMotorDirection) {
-    maxReverse = brakeValue - (((brakeValue - throttleMin) * maxReversePercent) / 100); // Based on maxReversePercent & Throttle Output Value settings
-  } else {
-    maxReverse = brakeValue;
-  }
-  
-  // Calculation for maxCCForward
-  if (reverseMotorDirection) {
-    maxCruiseControl = brakeValue - (((brakeValue - throttleMin) * maxCruiseControlPercent) / 100); //Based on maxCruiseControlPercent & Throttle Output Value settings
-  } else if (!reverseMotorDirection) {
-    maxCruiseControl = brakeValue + (((throttleMax - brakeValue) * maxCruiseControlPercent) / 100); // Based on maxCruiseControlPercent & Throttle Output Value settings
-  } else {
-    maxCruiseControl = brakeValue;
-  }
-
-  // Calculations for ramp intervals
-  forwardRampInterval = (forwardRampPercent * 100) / 100; // milliseconds between Forward updates
-  reverseRampInterval = (reverseRampPercent * 100) / 100; // milliseconds between Reverse updates
-  brakeRampInterval =  (brakeRampPercent * 100) / 100; // milliseconds between Reverse updates
-  cruiseControlRampInterval = (cruiseControlRampPercent * 100) / 100; // milliseconds between Reverse updates
   
 }
 
@@ -108,7 +44,6 @@ void loop() {
 
   // Variable Declarations
   static int motionCommanded; // variable to store motion commands from momentary buttons
-  static int motionCalculated; // variable to store motion calculated
   static unsigned long currentMillis; // variable to store currentMillis
   static int currentThrottle = brakeValue; //current throttle variable
 
@@ -118,50 +53,57 @@ void loop() {
 
   static boolean cruiseControlOn = 0; // 1 = true, 0 = false
   static unsigned long cruiseControlMillis = 0; // the first time Forward first commanded
-  static unsigned long previousCruiseControlRampMillis = 0; // the last time Cruise Control speed was updated
-  static int cruiseControlWaitMs = cruiseControlWaitSec * 1000; // convert Seconds to Ms
-  static int cruiseControlRightButtonDisableDelayMs = cruiseControlRightButtonDisableDelaySec * 1000; // convert Seconds to Ms
+  static unsigned long cruiseControlPreviousMillis = 0; // the last time Cruise Control speed was updated
+  static unsigned long cruiseControlWaitMs = cruiseControlWaitSec * 1000; // convert Seconds to Ms
+  static unsigned long cruiseControlForwardInputDisableDelaySec = cruiseControlForwardInputDisableDelaySec * 1000; // convert Seconds to Ms
   // End Variable Declarations
   
   currentMillis = millis(); // Update currentMillis every loop
   
-  getButtons(motionCommanded); // Get the button combinations pressed (e.g. forward/reverse/brake)
+  getManualInput(motionCommanded); // Get the Manual Control input states (e.g. forward/reverse/brake)
 
   // Calculate if CruiseControl should be on
-  if (enableCruiseControl) {
+  if (cruiseControlEnable) {
     calcCruiseControl(motionCommanded, cruiseControlOn, currentMillis, cruiseControlMillis, previousForwardRampMillis, 
-        cruiseControlWaitMs, cruiseControlRightButtonDisableDelayMs);
+        cruiseControlWaitMs, cruiseControlForwardInputDisableDelaySec);
   }
 
   // Calculate motion from button states and other details
   calcMotion(motionCommanded, cruiseControlOn, currentThrottle, currentMillis, 
       maxForward, previousForwardRampMillis, forwardRampInterval,
       maxReverse, previousReverseRampMillis, reverseRampInterval,
-      maxCruiseControl, previousCruiseControlRampMillis, cruiseControlRampInterval, cruiseControlMillis,
+      maxCruiseControl, cruiseControlPreviousMillis, cruiseControlRampInterval, cruiseControlMillis,
       brakeValue, previousBrakeRampMillis, brakeRampInterval);
   
 }
 
-// Returns button states
-int getButtons(int &motion) {
+// Return Manual Control input states
+void getManualInput(int &motion) {
 
-  boolean rightButtonValue = digitalRead(rightButton);
-  boolean leftButtonValue = digitalRead(leftButton);
+  boolean inputMan1_value = digitalRead(inputMan1);
+  boolean inputMan2_value = digitalRead(inputMan2);
+  boolean inputMan3_value = digitalRead(inputMan3);
+  boolean inputMan4_value = digitalRead(inputMan4);
+  boolean inputMan5_value = digitalRead(inputMan5);
+  boolean inputMan6_value = digitalRead(inputMan6);
+  boolean inputMan7_value = digitalRead(inputMan7);
+  boolean inputMan8_value = digitalRead(inputMan8);
+  boolean inputMan9_value = digitalRead(inputMan9);
 
   // Brake
-  if (rightButtonValue == HIGH && leftButtonValue == HIGH) {
+  if (inputMan1_value == HIGH && inputMan2_value == HIGH) {
     motion = 0;
   } 
   // Forward
-  else if (rightButtonValue == LOW && leftButtonValue == HIGH) {
+  else if (inputMan1_value == LOW && inputMan2_value == HIGH) {
     motion = 1;
   } 
   // Reverse - also disables cruise control
-  else if (rightButtonValue == LOW && leftButtonValue == LOW) {
+  else if (inputMan1_value == LOW && inputMan2_value == LOW) {
     motion = 2;
   }
   // Cruise Control Disable
-  else if (rightButtonValue == HIGH && leftButtonValue == LOW) {
+  else if (inputMan1_value == HIGH && inputMan2_value == LOW) {
     motion = 3;
   } 
   // If all else fails, then brake
@@ -171,10 +113,10 @@ int getButtons(int &motion) {
 }
 
 void calcCruiseControl(int motionCommanded, boolean &cruiseControlOn, unsigned long currentMillis, unsigned long previousForwardRampMillis, 
-          unsigned long &cruiseControlMillis, int cruiseControlWaitMs, int cruiseControlRightButtonDisableDelayMs) {
+          unsigned long &cruiseControlMillis, unsigned long cruiseControlWaitMs, unsigned int cruiseControlRightButtonDisableDelayMs) {
 
   // Check to see if Forward has been commanded for more than CruiseControlWaitMs
-  if (motionCommanded == 1 && !cruiseControlOn && (cruiseControlMillis != 0 && currentMillis - cruiseControlMillis >= cruiseControlWaitMs)) {
+  if (motionCommanded == 1 && !cruiseControlOn && (cruiseControlMillis != 0 && (currentMillis - cruiseControlMillis) >= cruiseControlWaitMs)) {
     cruiseControlOn = 1;
     
     #if defined(Debug)
@@ -222,7 +164,10 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
     // If the first time Forward commanded since last CruiseControlMillis reset update CruiseControlMillis
     if (cruiseControlMillis == 0) {
       cruiseControlMillis = millis();
+      
+      #if defined(Debug)
       Serial.print("Cruise Control Millis: ");Serial.print(cruiseControlMillis);Serial.print("   ");
+    #endif
     }
   }
   // Forward commanded and reverseMotorDirection = true PLUS
@@ -293,14 +238,11 @@ void calcMotion(int motionCommanded, boolean &cruiseControlOn, int &currentThrot
   
 }
 
-void increaseThrottle(unsigned long currentMillis, unsigned long &previousMillis, int interval, int &currentThrottle, int throttleTarget) {
+void increaseThrottle(unsigned long currentMillis, unsigned long &previousMillis, unsigned int interval, int &currentThrottle, int throttleTarget) {
 
-  if (currentMillis - previousMillis >= interval) {
-    for (currentThrottle; currentThrottle <= throttleTarget;) {
+  if (currentMillis - previousMillis >= interval && currentThrottle <= throttleTarget) {
       currentThrottle++;
       previousMillis = currentMillis;
-      break;
-      }
   }
   // Send throttle command even if there is no update -> in essence a keepalive for the motor controller
   sendThrottleCommand(currentThrottle);
@@ -311,14 +253,11 @@ void increaseThrottle(unsigned long currentMillis, unsigned long &previousMillis
 
 }
 
-void reduceThrottle(unsigned long currentMillis, unsigned long &previousMillis, int interval, int &currentThrottle, int throttleTarget) {
+void reduceThrottle(unsigned long currentMillis, unsigned long &previousMillis, unsigned int interval, int &currentThrottle, int throttleTarget) {
 
-  if (currentMillis - previousMillis >= interval) {
-    for (currentThrottle; currentThrottle >= throttleTarget;) {
+  if (currentMillis - previousMillis >= interval && currentThrottle >= throttleTarget) {
       currentThrottle--;
       previousMillis = currentMillis;
-      break;
-      }
   }
   // Send throttle command even if there is no update -> in essence a keepalive for the motor controller
   sendThrottleCommand(currentThrottle);
@@ -332,41 +271,41 @@ void reduceThrottle(unsigned long currentMillis, unsigned long &previousMillis, 
 // Send Throttle Command to the motor controller
 void sendThrottleCommand(int currentThrottle) {
 
-#if defined(MCP4XXX)
-  SpiPot5vWrite(currentThrottle);
+#if defined(MC_MCP4XXX)
+  MCP4XXX(currentThrottle);
 #endif
 
-#if defined(Syren50)
+#if defined(MC_SYREN50)
   Syren50Throttle(currentThrottle);
 #endif
 
-#if defined(Sabertooth2x32)
+#if defined(MC_SABER2X32)
   Sabertooth2x32Throttle(currentThrottle);
 #endif
 }
 
-#ifdef MCP4XXX
-// Code to control a MCP4151 digital potentiometer via SPI
-void SpiPot5vWrite(int currentThrottle) {
-  digitalWrite(CS, LOW);
+#if defined(MC_MCP4XXX)
+// Code to send potentiometer value to MCPXXX family of digital potentiometers via SPI
+void MCP4XXXWrite(signed int currentThrottle) {
+  digitalWrite(MCP4XXX_CS, LOW); // Select MCP4XXX
   SPI.transfer(address);
-  SPI.transfer(currentThrottle);
-  digitalWrite(CS, HIGH);
+  SPI.transfer(currentThrottle); // Send throttle value
+  digitalWrite(MCP4XXX_CS, HIGH); // Deselect MCP4XXX
 }
 #endif
 
-#if defined(Syren50)
+#if defined(MC_SYREN50)
 // Code to control a Dimension Engineering motor controller
-void Syren50Throttle(int currentThrottle){
+void Syren50Throttle(signed int currentThrottle) {
 
   ST.motor(1, currentThrottle);
   
 }
 #endif
 
-#if defined(Sabertooth2x32)
+#if defined(MC_SABER2X32)
 // Code to control a Dimension Engineering motor controller
-void Sabertooth2x32Throttle(int currentThrottle){
+void Sabertooth2x32Throttle(signed int currentThrottle) {
 
   ST.motor(1, currentThrottle);
   ST.motor(2, -currentThrottle);
