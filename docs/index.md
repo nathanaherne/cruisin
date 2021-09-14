@@ -3,18 +3,18 @@ title: Home
 description: Home page
 ---
 
-![image tooltip here](/five-kids-and-cars.jpg)
-banner1_text1 = "Awesome electric cars"
-banner1_text2 = "Endless adventure starts here"
+# Awesome electric cars
 
-banner2_image = "sophie-birthday.jpg"
-banner2_text1 = "They put smiles on faces"
-banner2_text2 = ""
+![Five children on their electric cars](/five-kids-and-cars.jpg)
 
-banner3_image = "ethan-crash-drain.jpg"
-banner3_text1 = "Designed for and tested by kids"
-banner3_text2 = ""
+# Endless adventure starts here
 
-banner4_image = "ethan-bricks.jpg"
-banner4_text1 = "Reliable and robust"
-banner4_text2 = ""
+![Girl with big smile on electric car](/sophie-birthday.jpg)
+# They put smiles on faces
+
+
+![Electric car crashed in drain](/ethan-crash-drain.jpg)
+# Designed for and tested by kids
+
+![Electric car carrying many bricks](/ethan-bricks.jpg)
+# Reliable and robust
