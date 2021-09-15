@@ -2,7 +2,11 @@ remote_theme: pages-themes/architect@v0.2.0
 plugins:
 - jekyll-remote-theme
 
-title: Cruisin Co - Awesome Electric Vehicles
-description: Cruisin Co - Cruisin Brain, a fully featured, drive by wire computer. Cruisin OLED to bring vital statistics to the driver and of course our awesome Cruisin Electric Cars.
+title: Cruisin Co
+description: Awesome Electric Vehicles
+
+Cruisin Brain, a fully featured, drive by wire computer,
+Cruisin OLED to bring vital statistics to the driver and 
+Cruisin Electric Cars.
 
 google_analytics: [Your Google Analytics tracking ID]

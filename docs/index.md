@@ -3,7 +3,7 @@ title: Home
 description: Home page
 ---
 
-# Awesome electric cars | Endless adventure starts here
+# Endless adventure starts here
 
 ![Five children on their electric cars](/five-kids-and-cars.jpg){:class="img-responsive"}
 <br/><br/>
@@ -12,7 +12,7 @@ description: Home page
 ![Girl with big smile on electric car](/sophie-birthday.jpg){:class="img-responsive"}
 <br/><br/>
 
-# Designed for and tested by kids
+# Tested by kids
 ![Electric car crashed in drain](/ethan-crash-drain.jpg){:class="img-responsive"}
 <br/><br/>
 
