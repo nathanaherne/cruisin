@@ -5,8 +5,4 @@ plugins:
 title: Cruisin Co
 description: Awesome Electric Vehicles
 
-Cruisin Brain, a fully featured, drive by wire computer,
-Cruisin OLED to bring vital statistics to the driver and 
-Cruisin Electric Cars.
-
 google_analytics: [Your Google Analytics tracking ID]
