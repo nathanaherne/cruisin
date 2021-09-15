@@ -1,18 +1,15 @@
-+++
-title = "Cruisin Brain"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+layout: page
+title: Cruisin Brain
+description: "An overview of cloud computing platforms and their benefits"
 
-layout = "single"
+categories:
+tags:
 
-draft = false
-author = "Nathan Aherne"
+author: Nathan Aherne
 
-weight = 10
-first_step = "future-features/"
-+++
-
+publish: True
+---
 
 # Cruisin Brain
 
