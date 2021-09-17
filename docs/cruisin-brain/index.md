@@ -2,8 +2,6 @@
 title: Cruisin Brain
 description: Cruisin Brain overview
 
-layout: post
-
 categories:
 tags:
 

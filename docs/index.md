@@ -11,7 +11,7 @@ description: Home page
 
 # [Check out the Cruisin Brain computer](/cruisin-brain/index.md)
 
-# [Make your a Cruisin Electric Car](/diy/index.md))
+# [Make your a Cruisin Electric Car](/diy/index.md)
 
 # They put smiles on faces
 ![Girl with big smile on electric car](/sophie-birthday.jpg){:class="img-responsive"}

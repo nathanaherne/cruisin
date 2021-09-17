@@ -2,8 +2,6 @@
 title: Build your own Crusin Electric Car
 description: Build your own Crusin Electric Car
 
-layout: post
-
 categories:
 tags:
 
