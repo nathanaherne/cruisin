@@ -13,15 +13,15 @@ description: Home page
 
 # ------------------------------------------------------------------------------------------------------------
 
-# Put the Cruisin Brain into a Cruisin Electric Car and see what happens
+## Cruisin Brain into a Cruisin Electric Car equals
 
-# They put smiles on faces
+## They put smiles on faces
 ![Girl with big smile on electric car](/sophie-birthday.jpg){:class="img-responsive"}
 <br/><br/>
 
-# Tested by kids
+## Tested by kids
 ![Electric car crashed in drain](/ethan-crash-drain.jpg){:class="img-responsive"}
 <br/><br/>
 
-# Reliable and robust
+## Reliable and robust
 ![Electric car carrying many bricks](/ethan-bricks.jpg){:class="img-responsive"}
