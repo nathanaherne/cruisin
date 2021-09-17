@@ -1,17 +1,9 @@
-+++
-title = "Build your own Cruisin Co Electric Car"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+Title: Build your own Cruisin electric car
+description: Build your own electric car
+---
 
-draft = false
-author = "Nathan Aherne"
-
-weight = 100
-+++
-
-
-# Build your own Cruisin Co Electric Car
+# Build your own Cruisin Electric Car
 
 It is possible to build the Cruisin Co Electric Car in a single day (excluding painting and as long as we have all parts available) and [we use the same tools listed here]({{< ref "/diy/tools-required/index" >}})
 

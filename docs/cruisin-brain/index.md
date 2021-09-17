@@ -1,7 +1,8 @@
 ---
-layout: page
 title: Cruisin Brain
-description: "An overview of cloud computing platforms and their benefits"
+description: Cruisin Brain overview
+
+layout: post
 
 categories:
 tags:

@@ -9,13 +9,9 @@ description: Home page
 <br/><br/>
 
 
-# Cruisin Brain
-[Overview](/cruisin-brain/index.md)
-[Other Uses](/cruisin-brain/other-uses/index.md)
-[Future Features](/cruisin-brain/future-features/index.md)
+# [Check out the Cruisin Brain computer](/cruisin-brain/index.md)
 
-# Make your own Electric Car
-[Overview](/diy/index.md)
+# [Make your a Cruisin Electric Car](/diy/index.md))
 
 # They put smiles on faces
 ![Girl with big smile on electric car](/sophie-birthday.jpg){:class="img-responsive"}
