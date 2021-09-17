@@ -18,3 +18,13 @@ description: Home page
 
 # Reliable and robust
 ![Electric car carrying many bricks](/ethan-bricks.jpg){:class="img-responsive"}
+
+<ul>
+  {% for item in include.nav %}
+    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+
+    {% if item.subnav %}
+      {% include nav.html nav=item.subnav %}
+    {% endif %}
+  {% endfor %}
+</ul>
