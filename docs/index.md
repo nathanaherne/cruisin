@@ -8,6 +8,15 @@ description: Home page
 ![Five children on their electric cars](/five-kids-and-cars.jpg){:class="img-responsive"}
 <br/><br/>
 
+
+# Cruisin Brain
+[Overview](/cruisin-brain/index.md)
+[Other Uses](/cruisin-brain/other-uses/index.md)
+[Future Features](/cruisin-brain/future-features/index.md)
+
+# Make your own Electric Car
+[Overview](/diy/index.md)
+
 # They put smiles on faces
 ![Girl with big smile on electric car](/sophie-birthday.jpg){:class="img-responsive"}
 <br/><br/>
@@ -18,13 +27,3 @@ description: Home page
 
 # Reliable and robust
 ![Electric car carrying many bricks](/ethan-bricks.jpg){:class="img-responsive"}
-
-<ul>
-  {% for item in include.nav %}
-    <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-
-    {% if item.subnav %}
-      {% include nav.html nav=item.subnav %}
-    {% endif %}
-  {% endfor %}
-</ul>
