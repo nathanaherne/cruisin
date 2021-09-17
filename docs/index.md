@@ -23,5 +23,5 @@ description: Home page
 ![Electric car crashed in drain](/ethan-crash-drain.jpg){:class="img-responsive"}
 <br/><br/>
 
-## Reliable and robust
+## Strong & Reliable
 ![Electric car carrying many bricks](/ethan-bricks.jpg){:class="img-responsive"}
