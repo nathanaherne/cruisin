@@ -3,15 +3,17 @@ title: Home
 description: Home page
 ---
 
-# Endless adventure starts here
-
 ![Five children on their electric cars](/five-kids-and-cars.jpg){:class="img-responsive"}
 <br/><br/>
 
 
-# [Check out the Cruisin Brain computer](/cruisin-brain/index.md)
+## [Check out Cruisin Brain](/cruisin-brain/index.md)
 
-# [Make your a Cruisin Electric Car](/diy/index.md)
+## [Checkout Cruisin Electric Car](/diy/index.md)
+
+# ------------------------------------------------------------------------------------------------------------
+
+# Put the Cruisin Brain into a Cruisin Electric Car and see what happens
 
 # They put smiles on faces
 ![Girl with big smile on electric car](/sophie-birthday.jpg){:class="img-responsive"}
