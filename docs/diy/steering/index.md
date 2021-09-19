@@ -10,9 +10,9 @@ author: Nathan Aherne
 publish: True
 ---
 
-![Banner image](banner.jpg){:class="img-responsive"}
-
 # Steering
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 The mobility scooter might have a steering column that is too long or too short. If it is too long, cut it to the required length and weld on a horizontal piece of 20mm square tube, if it is too short, extend it and weld on a piece of horizontal steel. 
 

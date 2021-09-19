@@ -10,6 +10,8 @@ author: Nathan Aherne
 publish: True
 ---
 
+# Strip the mobility scooter
+
 ![Banner image](banner.jpg){:class="img-responsive"}
 
 In this section, we will show you how to strip your mobility scooter. The end goal is to strip everything from the mobility scooter until you have the basic metal frame with motors, wheels and steering still attached.

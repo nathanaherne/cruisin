@@ -10,9 +10,9 @@ author: Nathan Aherne
 publish: True
 ---
 
-![Banner image](banner.jpg){:class="img-responsive"}
-
 # Parts Required
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 Below details the parts you will need to buy to build your own Cruisin Co Electric Car.
 
@@ -112,7 +112,7 @@ The Cruisin Brain is a combination of software (that we have written) and off th
 
 Building the Cruisin Brain is probably the most complex part of creating a Cruisin Electric Car, especially if you have not used Arduino or microcontrollers before. We have started work on creating a ready made Cruisin Brain (that you can buy) so that you do not need to build your own.
 
-[There is detailed information on the Cruisin Brain available here](/cruisin-brain/index.html)
+[There is detailed information on the Cruisin Brain available here](/cruisin/cruisin-brain/index.html)
 
 ### Lights
 You can add extra awesome to your electric car by adding lights.

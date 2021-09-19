@@ -10,6 +10,8 @@ author: Nathan Aherne
 publish: True
 ---
 
+# Seat Frame
+
 ![Banner image](banner.jpg){:class="img-responsive"}
 
 Now it is time to make the frame for the seat. We recommend 20mm square tube (non galvanised as welding galvanised steel creates toxic fumes), cut it to the required length/shape and then weld the pieces together. Each mobility scooter is different, so there is no formula for doing this as each mobility scooter requires a slightly different configuration. You just want to make up a frame that will support the seat. It is important to make sure the seat will be higher than the rear wheels.

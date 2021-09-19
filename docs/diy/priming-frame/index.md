@@ -1,14 +1,18 @@
-+++
-title = "Priming the frame"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Priming the frame
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 20
-+++
+author: Nathan Aherne
+
+publish: True
+---
+
+# Priming the frame
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 # Painting any raw steel
 
@@ -20,4 +24,4 @@ We regularly use White Knight SLS Etch Primer to paint any raw metal and welds. 
 
 The car (it isn't a mobility scooter anymore) below has just had its seat frame welded in, its steering column and handle bars welded and any rusty or excess metal removed.
 
-{{< figure src="ready-for-priming.jpg" title="Mobility Scooter ready for priming" >}}
+![Mobility Scooter ready for priming](ready-for-priming.jpg){:class="img-responsive"}

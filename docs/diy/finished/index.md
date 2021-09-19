@@ -1,16 +1,18 @@
-+++
-title = "Finished"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Finished
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 8
+author: Nathan Aherne
 
-banner_offset = "25 25"
-+++
+publish: True
+---
+
+# Finished
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 
 Congratulations, your car should now be finished. Your car should look similar to and drive like the car in the below video.

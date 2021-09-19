@@ -1,16 +1,18 @@
-+++
-title = "Trailer"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Trailer
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 7
-+++
+author: Nathan Aherne
+
+publish: True
+---
 
 # Trailer
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 No electric car is complete without a trailer (in my kids minds at least). This page details how to make a trailer for your electric car from off the shelf components.
 

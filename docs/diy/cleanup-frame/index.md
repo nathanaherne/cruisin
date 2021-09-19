@@ -10,6 +10,8 @@ author: Nathan Aherne
 publish: True
 ---
 
+# Clean up the frame
+
 ![Banner image](banner.jpg){:class="img-responsive"}
 
 # Remove any excess metal parts

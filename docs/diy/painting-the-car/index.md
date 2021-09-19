@@ -1,16 +1,18 @@
-+++
-title = "Painting the Car"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Painting the car
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 9
-+++
+author: Nathan Aherne
+
+publish: True
+---
 
 # Painting the car
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 You can paint the car any way you wish, though you should get paints that are compatible with each other. We regularly use spray paint.
 
