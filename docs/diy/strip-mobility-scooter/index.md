@@ -1,14 +1,16 @@
-+++
-title = "Strip the mobility scooter"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Strip the mobility scooter
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 70
-+++
+author: Nathan Aherne
+
+publish: True
+---
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 In this section, we will show you how to strip your mobility scooter. The end goal is to strip everything from the mobility scooter until you have the basic metal frame with motors, wheels and steering still attached.
 
@@ -58,5 +60,9 @@ All the electronics (except motors) removed.
 <br>
 
 **You have finished stripping the mobility scooter**
+
+### Next section is [Seat Frame](/cruisin/diy/seat-frame/index.md)
+
+### Previous section is [Parts Required](/cruisin/diy/parts-required/index.md)
 
 

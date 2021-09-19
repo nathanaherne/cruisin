@@ -6,6 +6,9 @@ description: Home page
 ![Five children on their electric cars](/five-kids-and-cars.jpg){:class="img-responsive"}
 <br/><br/>
 
+# ------------------------------------------------------------------------------------------------------------
+
+# Build a Cruisin Brain or Cruisin Electric Car
 
 ## [Check out Cruisin Brain](/cruisin-brain/index.md)
 

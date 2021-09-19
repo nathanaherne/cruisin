@@ -9,6 +9,7 @@ author: Nathan Aherne
 
 publish: True
 ---
+
 ![Banner image](banner.jpg){:class="img-responsive"}
 
 # Parts Required
@@ -45,7 +46,7 @@ There are a couple of motor controllers we recommend:
 
 **Motor Controller from the mobility scooter**
 
-If you wish to use the motor controller that came with your mobility scooter, you need to use the wigwag that came with your mobility scooter to control forward and reverse (plus several other features the controllers require). If you choose to do this, you should make sure you keep (and not damage) all electrical parts from the original mobility scooter. You will need to replicate (and possibly reverse engineer) much of the electronics system from the mobility scooter. This is unique for each mobility scooter and will not be covered in these instructions. Please keep in mind that you will be unable to use the [Cruisin Brain](/cruisin-brain/index.md) in your electric car.
+If you wish to use the motor controller that came with your mobility scooter, you need to use the wigwag that came with your mobility scooter to control forward and reverse (plus several other features the controllers require). If you choose to do this, you should make sure you keep (and not damage) all electrical parts from the original mobility scooter. You will need to replicate (and possibly reverse engineer) much of the electronics system from the mobility scooter. This is unique for each mobility scooter and will not be covered in these instructions. Please keep in mind that you will be unable to use the [Cruisin Brain](/cruisin/cruisin-brain/index.md) in your electric car.
 
 This is what a Wigwag looks like
 <img src="https://i.imgur.com/07iaT6O.jpg">
@@ -116,13 +117,17 @@ Building the Cruisin Brain is probably the most complex part of creating a Cruis
 ### Lights
 You can add extra awesome to your electric car by adding lights.
 
-We recommend 12v LED lights coupled with a voltage regulator that outputs 12v and supports the voltage your [battery(s)](partsRequired.md#battery(s)) supply. You can wire the lights so they turn on when the car is turned on, or wire them to a switch that turns them on. For simplicity we often wire the lights so they turn on when the car is on. The [twin core wire above](partsRequired.md#wiring) is good for wiring up the LED lights.
+We recommend 12v LED lights coupled with a voltage regulator that outputs 12v and supports the voltage your [battery(s)](index.md#battery(s)) supply. You can wire the lights so they turn on when the car is turned on, or wire them to a switch that turns them on. For simplicity we often wire the lights so they turn on when the car is on. The [twin core wire above](index.md#wiring) is good for wiring up the LED lights.
 
-Future versions of the [Cruisin Brain](/cruisin-brain/index.md) will (along with other features) support headlights, brake lights and indicator lights.
+Future versions of the [Cruisin Brain](/cruisin/cruisin-brain/index.md) will (along with other features) support headlights, brake lights and indicator lights.
 
 ### Other things you will need
 1. Metal primer paint for any spots that have bare metal
 2. Paint for metal and wood to make your new car look awesome
 3. 20mm square steel tube to create the structure for the seat
-3. 20mm square steel tube or round tube (depending on your throttle control choice), [see here for more details](/diy/steering/index.md)
+3. 20mm square steel tube or round tube (depending on your throttle control choice), [see here for more details](/cruisin/diy/steering/index.md)
 4. Standard bicycle grips for the steering bars
+
+### Next section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.md)
+
+### Previous section is [Tools Required](/cruisin/diy/tools-required/index.md)
