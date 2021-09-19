@@ -33,8 +33,8 @@ Below are 3 more examples of what your seat frame could look like. You will noti
 ![Seat frame example 4](seat-frame-example4.jpg){:class="img-responsive"}
 
 
-### Next section is [Cleaning frame](/cruisin/diy/cleaning-frame/index.html)
+### Next section is [Steering](/cruisin/diy/steering/index.html)
 
-### Previous section is [Seat & floor plate](/cruisin/diy/seat-floor/index.html)
+### Previous section is [Strip the mobility scooter](/cruisin/diy/strip-mobility-scooter/index.html)
 
 ### [Start Over](/cruisin/diy/index.html)

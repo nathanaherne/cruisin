@@ -26,8 +26,8 @@ The car (it isn't a mobility scooter anymore) below has just had its seat frame 
 
 ![Mobility Scooter ready for priming](ready-for-priming.jpg){:class="img-responsive"}
 
-### Next section is [Seat Frame](/cruisin/diy/steering/index.html)
+### Next section is [Electronics](/cruisin/diy/electronics/index.html)
 
-### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+### Previous section is [Cleaning the frame](/cruisin/diy/cleaning-frame/index.html)
 
 ### [Start Over](/cruisin/diy/index.html)

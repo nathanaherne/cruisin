@@ -31,7 +31,7 @@ In the photo below, the steering column was cut to length and a steering wheel w
 ### Electric bike throttle
 If you wish to use an electric bike throttle, you will need to use round tubing to suit the throttle.
 
-### Next section is [Parts Required](/cruisin/diy/parts-required/index.html)
+### Next section is [Seat & floor plate](/cruisin/diy/seat-floor/index.html)
 
 ### Previous section is [Seat Frame](/cruisin/diy/seat-frame/index.html)
 

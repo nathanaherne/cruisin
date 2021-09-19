@@ -28,8 +28,8 @@ When you have finished painting, your car should look something like this
 <br>
 <br>
 
-### Next section is [Seat Frame](/cruisin/diy/steering/index.html)
+### Next section is [Finished](/cruisin/diy/finished/index.html)
 
-### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+### Previous section is [Electronics](/cruisin/diy/electronics/index.html)
 
 ### [Start Over](/cruisin/diy/index.html)

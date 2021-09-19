@@ -22,8 +22,8 @@ Start out with an angle grinder with a cutoff wheel and remove any larger metal 
 
 See image at top which shows all excess metal removed
 
-### Next section is [Seat Frame](/cruisin/diy/steering/index.html)
+### Next section is [Priming Frame](/cruisin/diy/priming-frame/index.html)
 
-### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+### Previous section is [Seat & floor plate](/cruisin/diy/seat-floor/index.html)
 
 ### [Start Over](/cruisin/diy/index.html)

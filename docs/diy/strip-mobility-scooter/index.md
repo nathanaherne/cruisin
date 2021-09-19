@@ -67,6 +67,6 @@ All the electronics (except motors) removed.
 
 ### Previous section is [Parts Required](/cruisin/diy/parts-required/index.html)
 
-### Start over (/cruisin/diy/tools-required/index.html)
+### [Start over](/cruisin/diy/tools-required/index.html)
 
 

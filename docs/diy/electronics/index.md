@@ -50,3 +50,10 @@ This section describes how you should install the electronics to achieve the abo
 3. You should make sure it is not underneath the cars frame just incase the driver scrapes a rock.
 4. You should not have any exposed wires but if you do, it should be insulated with tape or other insulating medium.
 5. Shrink tubing is good at covering exposed wiring.
+
+
+### Next section is [Painting](/cruisin/diy/painting-the-car/index.html)
+
+### Previous section is [Priming the frame](/cruisin/diy/priming-frame/index.html)
+
+### [Start Over](/cruisin/diy/index.html)
