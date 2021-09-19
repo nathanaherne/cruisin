@@ -9,6 +9,7 @@ author: Nathan Aherne
 
 publish: True
 ---
+![Banner image](/banner.jpg){:class="img-responsive"}
 
 Our mission at Cruisin is to make awesome electric cars available to everyone. We have put these instructions online towards making that mission possible. Building a Cruisin electric car is a great project to do with children, doing so promote an interest in [STEM](https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics) and teaches them driving skills. They are a great replacement for motorised gokarts as they are almost silent.
 
