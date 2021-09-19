@@ -1,6 +1,6 @@
 ---
 title: About Us
-description: Cruisin, awesome electric vehiclles
+description: Cruisin, awesome electric vehicles
 
 categories:
 tags:

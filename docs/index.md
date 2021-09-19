@@ -1,6 +1,13 @@
 ---
 title: Home
 description: Home page
+
+categories:
+tags:
+
+author: Nathan Aherne
+
+publish: True
 ---
 
 ![Five children on their electric cars](/five-kids-and-cars.jpg){:class="img-responsive"}
