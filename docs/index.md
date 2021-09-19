@@ -8,15 +8,15 @@ description: Home page
 
 ------------------------------------------------------------------------------------------------------------
 
-# [Build Cruisin Brain](/cruisin/cruisin-brain/index.md)
+# [Build Cruisin Brain](/cruisin/cruisin-brain/index.html)
 
-# [Build Cruisin Electric Car](/cruisin/diy/index.md)
+# [Build Cruisin Electric Car](/cruisin/diy/index.html)
 
 ------------------------------------------------------------------------------------------------------------
 
-## Cruisin Brain into a Cruisin Electric Car equals
+# Cruisin Brain & Cruisin Electric Car equals
 
-## They put smiles on faces
+## Smiles on faces
 ![Girl with big smile on electric car](/sophie-birthday.jpg){:class="img-responsive"}
 <br/><br/>
 

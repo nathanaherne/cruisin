@@ -22,6 +22,8 @@ Start out with an angle grinder with a cutoff wheel and remove any larger metal 
 
 See image at top which shows all excess metal removed
 
+Once you have removed all the excess metal parts, you want to clean the frame completely to remove all oils, dust, dirt.
+
 ### Next section is [Priming Frame](/cruisin/diy/priming-frame/index.html)
 
 ### Previous section is [Seat & floor plate](/cruisin/diy/seat-floor/index.html)
