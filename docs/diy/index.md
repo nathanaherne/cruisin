@@ -13,13 +13,13 @@ publish: True
 
 Our mission at Cruisin is to make awesome electric cars available to everyone. We have put these instructions online towards making that mission possible. Building a Cruisin electric car is a great project to do with children, doing so promote an interest in [STEM](https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics) and teaches them driving skills. They are a great replacement for motorised gokarts as they are almost silent.
 
-It is possible to build the Cruisin Electric Car in a single day, excluding painting and as long as you have all [parts](/docs/diy/parts-required/index.md) and [tools](/crusin/diy/tools-required/index.md) required.
+It is possible to build the Cruisin Electric Car in a single day, excluding painting and as long as you have all [parts](/docs/diy/parts-required/index.html) and [tools](/crusin/diy/tools-required/index.html) required.
 
 You should expect to outlay approximately $300 (Australian Dollars) to build your own version of the Cruisin Electric Car. The total cost does depends on how much you spend on your mobility scooter and the amount of bling you add to your car.
 
 These cars have a top speed of approximately 15km an hour, which is quite fast, especially in turns. The Cruisin Brain allows you to limit the top speed. We recommend limiting top speed to a little faster than fast walking pace, which is approx 5km per hour.
 
-We tested the design of the Cruisin Electric car and the [Cruisin Brain](/cruisin/cruisin-brain/index.md) that is at the heart of every Cruisin Electric Car for over a year before we made these instructions available.
+We tested the design of the Cruisin Electric car and the [Cruisin Brain](/cruisin/cruisin-brain/index.html) that is at the heart of every Cruisin Electric Car for over a year before we made these instructions available.
 
 
 **The basic process of building the Cruisin Electric car is:**
@@ -32,7 +32,7 @@ We tested the design of the Cruisin Electric car and the [Cruisin Brain](/cruisi
 
 How to achieve the above is detailed extensively in the following pages.
 
-If you would like to get assistance building a Cruisin Electric Car please [contact us](/cruisin/contact/index.md)
+If you would like to get assistance building a Cruisin Electric Car please [contact us](/cruisin/contact/index.html)
 
 ### Notices and Warnings
 
@@ -42,18 +42,18 @@ We are not responsbile for anything that occurs as a result of you using these i
 
 Table of Contents
 
-- [Build Overview](/cruisin/diy/build-overview/index.md)
-- [Tools required](/cruisin/diy/tools-required/index.md)
-- [Parts required](/cruisin/diy/parts-required/index.md)
-- [Strip the mobility scooter](/cruisin/diy/strip-mobility-scooter/index.md)
-- [Seat frame](/cruisin/diy/seat-frame/index.md)
-- [Steering](/cruisin/diy/steering/index.md)
-- [Seat and floor plate](/cruisin/diy/seat-floor/index.md)
-- [Cleaning frame](/cruisin/diy/cleanup-frame/index.md)
-- [Priming frame](/cruisin/diy/priming-frame/index.md)
-- [Electronics](/cruisin/diy/electronics/index.md)
-- [Painting](/cruisin/diy/painting-the-car/index.md)
-- [Finished](/cruisin/diy/finished/index.md)
-- [Trailer](/cruisin/diy/trailer/index.md)
+- [Build Overview](/cruisin/diy/build-overview/index.html)
+- [Tools required](/cruisin/diy/tools-required/index.html)
+- [Parts required](/cruisin/diy/parts-required/index.html)
+- [Strip the mobility scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+- [Seat frame](/cruisin/diy/seat-frame/index.html)
+- [Steering](/cruisin/diy/steering/index.html)
+- [Seat and floor plate](/cruisin/diy/seat-floor/index.html)
+- [Cleaning frame](/cruisin/diy/cleanup-frame/index.html)
+- [Priming frame](/cruisin/diy/priming-frame/index.html)
+- [Electronics](/cruisin/diy/electronics/index.html)
+- [Painting](/cruisin/diy/painting-the-car/index.html)
+- [Finished](/cruisin/diy/finished/index.html)
+- [Trailer](/cruisin/diy/trailer/index.html)
 
-[Checkout Cruisin Brain](/cruisin/cruisin-brain/index.md)
+[Checkout Cruisin Brain](/cruisin/cruisin-brain/index.html)

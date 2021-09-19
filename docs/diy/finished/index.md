@@ -17,6 +17,6 @@ Congratulations, your car should now be finished. Your car should look similar t
 
 {{< vimeo id="277448367" class="my-vimeo-wrapper-class" >}}
 
-If you would like to build a trailer (like the one in the above video) for your car, [the instructions are available here]({{< ref "/diy/trailer/index.md" >}})
+If you would like to build a trailer (like the one in the above video) for your car, [the instructions are available here]({{< ref "/diy/trailer/index.html" >}})
 
-If you have any questions, comments or feedback please [contact us]({{< ref "contact/index.md" >}}).
+If you have any questions, comments or feedback please [contact us]({{< ref "contact/index.html" >}}).

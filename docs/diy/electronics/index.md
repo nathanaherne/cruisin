@@ -15,9 +15,9 @@ weight = 10
 A basic overview of how the electronics system works is:
 
 1. The driver pushes the [forward/reverse buttons](partsRequired.md#throttle-control)
-2. The [Cruisin Brain](/cruisin-brain/index.md) detects the button(s) being pushed.
-3. The [Cruisin Brain](/cruisin-brain/index.md) converts the button push into a command the motor controller can understand.
-4. The [Cruisin Brain](/cruisin-brain/index.md) sends the command to the motor controller.
+2. The [Cruisin Brain](/cruisin-brain/index.html) detects the button(s) being pushed.
+3. The [Cruisin Brain](/cruisin-brain/index.html) converts the button push into a command the motor controller can understand.
+4. The [Cruisin Brain](/cruisin-brain/index.html) sends the command to the motor controller.
 5. The [Motor controller](partsRequired.md#motor-contoller) takes power from batteries and uses it to power the electric motor.
 
 This section describes how you should install the electronics to achieve the above. Before you install the electronics, you should plan out, using the information below, where on the car, you will install them.

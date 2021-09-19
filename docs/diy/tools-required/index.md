@@ -27,6 +27,6 @@ You will probably need other things like a pencil, spirit level, screw drivers, 
 
 If you do not have some of the power tools above, this project might be a good excuse to buy them :-)
 
-### Next section is [Parts required](/cruisin/diy/parts-required/index.md)
+### Next section is [Parts required](/cruisin/diy/parts-required/index.html)
 
-### Previous section is [Build Overview](/cruisin/diy/build-overview/index.md)
+### Previous section is [Build Overview](/cruisin/diy/build-overview/index.html)
