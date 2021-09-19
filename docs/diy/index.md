@@ -18,7 +18,7 @@ You should expect to outlay approximately $300 (AUD) to build your own version o
 
 These cars have a top speed of approximately 15km an hour, which is quite fast, especially in turns. The Cruisin Brain allows you to limit the top speed. We recommend limiting top speed to a little faster than fast walking pace.
 
-We tested the design of the Cruisin Electric car and the [Cruisin Brain](/cruisin-brain/index.md) that is at the heart of every Cruisin Electric Car for over a year before we made these instructions available.
+We tested the design of the Cruisin Electric car and the [Cruisin Brain](cruisin-brain/index.md) that is at the heart of every Cruisin Electric Car for over a year before we made these instructions available.
 
 
 **The basic process of building the Cruisin Electric car is:**
@@ -41,18 +41,18 @@ We are not responsbile for anything that occurs as a result of you using these i
 
 Table of Contents
 
-- [Build Overview](/build-overview/index.md)
-- [Tools required](/tools-required/index.md)
-- [Parts required](/parts-required/index.md)
-- [Strip the mobility scooter](/strip-mobility-scooter/index.md)
-- [Seat frame](/seat-frame/index.md)
-- [Steering](/steering/index.md)
-- [Seat and floor plate](/seat-floor/index.md)
-- [Cleaning frame](/cleanup-frame/index.md)
-- [Priming frame](/priming-frame/index.md)
+- [Build Overview](build-overview/index.md)
+- [Tools required](tools-required/index.md)
+- [Parts required](parts-required/index.md)
+- [Strip the mobility scooter](strip-mobility-scooter/index.md)
+- [Seat frame](seat-frame/index.md)
+- [Steering](steering/index.md)
+- [Seat and floor plate](seat-floor/index.md)
+- [Cleaning frame](cleanup-frame/index.md)
+- [Priming frame](priming-frame/index.md)
 - [Electronics](electronics/index.md)
-- [Painting](/painting-the-car/index.md)
-- [Finished](/finished/index.md)
-- [Trailer](/trailer/index.md)
+- [Painting](painting-the-car/index.md)
+- [Finished](finished/index.md)
+- [Trailer](trailer/index.md)
 
-[Checkout Cruisin Brain](/cruisin-brain/index.md)
+[Checkout Cruisin Brain](cruisin-brain/index.md)

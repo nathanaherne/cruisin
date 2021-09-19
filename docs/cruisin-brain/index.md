@@ -28,7 +28,7 @@ The Cruisin Brain was created to support the needs of different vehicles, vehicl
 6. Ability to reverse motor direction if the motor(s) are running backwards.
 7. Several inbuilt safety features.
 
-[Checkout the new features we are working to add to the Cruisin Brain software and hardware.](/cruisin-brain/futureFeatures.md)
+[Checkout the new features we are working to add to the Cruisin Brain software and hardware.](/futureFeatures/index.md)
 
 ### Cruisin Brain Software
 
@@ -64,7 +64,7 @@ The Cruisin Brain OLED has its own microcontroller. The Cruisin Brain Mainboard 
 
 The Cruisin Brain AHRS has its own microncontroller. It sends all of its information to the Cruisin Brain Mainboard for final processing and integration with other sensors and settings
 
-The Cruisin Brain AHRS [is used to provide a number of new safety features](/cruisin-brain/futureFeatures/index.md) as well drive by wire.
+The Cruisin Brain AHRS [is used to provide a number of new safety features](futureFeatures/index.md) as well drive by wire.
 
 ### Other uses for the Cruisin Brain
 
@@ -78,4 +78,4 @@ The Cruisin Brain is not just for the Cruisin Electric Car but is suitable for m
 6. ATV's
 7. Children's electric cars
 
-[Read more about how you can use the Cruisin Brain in these vehicles](/cruisin-brain/otherUses/index.md)
+[Read more about how you can use the Cruisin Brain in these vehicles](otherUses/index.md)
