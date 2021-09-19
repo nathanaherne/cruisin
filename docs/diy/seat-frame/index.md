@@ -24,13 +24,13 @@ You will notice the steel plates underneath the seat frame in the photo below. T
 ### Examples
 Below are 3 more examples of what your seat frame could look like. You will notice that each of the below examples is different, as each mobility scooter is slightly different.
 
-{{< figure src="seat-frame-example2.jpg" title="Seat frame example 2" >}}
+![Seat frame example 2](seat-frame-example2.jpg){:class="img-responsive"}
 
-{{< figure src="seat-frame-example3.jpg" title="Seat frame example 3" >}}
+![Seat frame example 3](seat-frame-example3.jpg){:class="img-responsive"}
 
-{{< figure src="seat-frame-example4.jpg" title="Seat frame example 4" >}}
+![Seat frame example 4](seat-frame-example4.jpg){:class="img-responsive"}
 
 
-### Next section is [Steering](/cruisin/diy/steering/index.html)
+### Next section is [Cleaning frame](/cruisin/diy/cleaning-frame/index.html)
 
-### Previous section is [Parts Required](/cruisin/diy/strip-mobility-scooter/index.html)
+### Previous section is [Seat & floor plate](/cruisin/diy/seat-floor/index.html)

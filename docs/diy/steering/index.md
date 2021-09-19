@@ -1,14 +1,16 @@
-+++
-title = "Steering"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Steering
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 50
-+++
+author: Nathan Aherne
+
+publish: True
+---
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 # Steering
 
