@@ -97,7 +97,7 @@ In saying the above there are several other options, some of which are below.
 4. [Joystick](https://www.servocity.com/electronics/components/joysticks)
 
 ### Wiring
-If you are using the push button switches to control forward/reverse (above), you will need to get some [twin core wire (light gauge)](https://www.jaycar.com.au/light-duty-fig-8-speaker-cable-sold-per-metre/p/WB1702). You will need approx 6m of this. This wire is also good for [lighting](partsRequired.md#lights).
+If you are using the push button switches to control forward/reverse (above), you will need to get some [twin core wire (light gauge)](https://www.jaycar.com.au/light-duty-fig-8-speaker-cable-sold-per-metre/p/WB1702). You will need approx 6m of this. This wire is also good for [lighting](parts-required.md#lights).
 
 If you are using the electric bike throttle (or any other device that has 3 wires), we recommend this [three core wire](https://hobbyking.com/en_us/twisted-22awg-servo-wire-1mtr-r-b-y-22awg.html). You will need approximately 6m of this.
 

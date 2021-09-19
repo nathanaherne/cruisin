@@ -45,7 +45,7 @@ After a little bit of work, you should have something like this, if you look clo
 Now that you can get to the electrical wiring, you can remove it. 
 
 1. If you want to use the motor controller that came with the mobility scooter you should remove the electronics carefully and take photos of the process, so that you can connect it back together. 
-2. If you are using the [Cruisin Brain](/cruisin-brain/index.html) and one of the [recommended motor controllers](partsRequired.md#motor-controller), damaging the electronics isn't an issue. 
+2. If you are using the [Cruisin Brain](/cruisin-brain/index.html) and one of the [recommended motor controllers](parts-required.md#motor-controller), damaging the electronics isn't an issue. 
 
 Keep in mind that in both cases you should not damage the wires coming out of the motor(s).
 
