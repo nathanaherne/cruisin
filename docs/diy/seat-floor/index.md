@@ -28,3 +28,5 @@ In the below photo below, the seat and floor plate are not attached to the car. 
 ### Next section is [Seat Frame](/cruisin/diy/steering/index.html)
 
 ### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

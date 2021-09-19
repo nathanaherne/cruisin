@@ -16,10 +16,6 @@ publish: True
 
 No electric car is complete without a trailer (in my kids minds at least). This page details how to make a trailer for your electric car from off the shelf components.
 
-<img src="https://i.imgur.com/G9iyc4L.jpg">
-<br>
-<br>
-
 The trailer starts off with a $20 hand trolley from [Bunnings](https://www.bunnings.com.au/250kg-p-handle-trolley-with-pneumatic-tyres_p2972045) or your local hardware retailer. 
 
 The trolley looks like the below photo.
@@ -27,7 +23,7 @@ The trolley looks like the below photo.
 <br>
 <br>
 
-Once you have your trolley, you will need to remove the bottom plate and part of the top of it, so it looks like the below photo. You will notice the grey paint, [it is the same metal primer used for the car](primingTheFrame.md)
+Once you have your trolley, you will need to remove the bottom plate and part of the top of it, so it looks like the below photo. You will notice the grey paint, [it is the same metal primer used for the car](/cruisin/diy/priming-the-frame/index.html)
 <img src="https://i.imgur.com/rEgYuor.jpg">
 <br>
 <br>
@@ -70,3 +66,8 @@ You should now have a trailer that looks just like this
 <br>
 <br>
 
+### Next section is [Parts required](/cruisin/diy/parts-required/index.html)
+
+### Previous section is [Build Overview](/cruisin/diy/build-overview/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

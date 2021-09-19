@@ -19,10 +19,7 @@ Below details the parts you will need to buy to build your own Cruisin Co Electr
 ### Mobility scooter
 You will need to find an old mobility scooter, though you can use an electric wheelchair (but they require more effort).
 
-An example mobility scooter
-<img src="https://i.imgur.com/SxbXyxz.jpg">
-<br>
-<br>
+See example mobility scooter above
 
 You can get your mobility scooter from places like [Gumtree](https://www.gumtree.com.au), calling a local mobility scooter retailer, a aged care home or [Ebay](https://www.ebay.com). When you are selecting a mobility scooter, you want to make sure the frame is in good condition and the motor and drive-train works, everything else will probably be replaced during this process. 
 
@@ -131,3 +128,5 @@ Future versions of the [Cruisin Brain](/cruisin/cruisin-brain/index.html) will (
 ### Next section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
 
 ### Previous section is [Tools Required](/cruisin/diy/tools-required/index.html)
+
+### [Start over](/cruisin/diy/tools-required/index.html)

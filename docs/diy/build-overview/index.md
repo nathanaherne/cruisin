@@ -38,3 +38,5 @@ Mobility scooters are designed to carry large adults (up to 200kg), this has the
 We are not responsbile for anything that occurs as a result of you using these instructions.
 
 ### Next section is [Tools required](/cruisin/diy/tools-required/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

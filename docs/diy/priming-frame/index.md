@@ -25,3 +25,9 @@ We regularly use White Knight SLS Etch Primer to paint any raw metal and welds. 
 The car (it isn't a mobility scooter anymore) below has just had its seat frame welded in, its steering column and handle bars welded and any rusty or excess metal removed.
 
 ![Mobility Scooter ready for priming](ready-for-priming.jpg){:class="img-responsive"}
+
+### Next section is [Seat Frame](/cruisin/diy/steering/index.html)
+
+### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

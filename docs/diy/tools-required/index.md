@@ -9,9 +9,10 @@ author: Nathan Aherne
 
 publish: True
 ---
-![Banner image](banner.jpg){:class="img-responsive"}
 
 # Tools required
+
+![Banner image](banner.jpg){:class="img-responsive"}
 
 Turning a mobility scooter into a Cruisin Electric car does not take many tools. I am a fan of using powertools where possible because they make the job quicker. You will need the following tools to complete the job.
 
@@ -30,3 +31,5 @@ If you do not have some of the power tools above, this project might be a good e
 ### Next section is [Parts required](/cruisin/diy/parts-required/index.html)
 
 ### Previous section is [Build Overview](/cruisin/diy/build-overview/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

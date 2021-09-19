@@ -21,3 +21,9 @@ You are now at the point where you should remove any excess metal parts, burrs a
 Start out with an angle grinder with a cutoff wheel and remove any larger metal parts. Clean up rust, burrs and excess wilds with an angle grinder with a grinding disk. If you do not wish to use an angle grinder, you can use hand tools but it will take much longer.
 
 See image at top which shows all excess metal removed
+
+### Next section is [Seat Frame](/cruisin/diy/steering/index.html)
+
+### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

@@ -14,11 +14,14 @@ publish: True
 
 ![Banner image](banner.jpg){:class="img-responsive"}
 
-
 Congratulations, your car should now be finished. Your car should look similar to and drive like the car in the below video.
 
 {{< vimeo id="277448367" class="my-vimeo-wrapper-class" >}}
 
-If you would like to build a trailer (like the one in the above video) for your car, [the instructions are available here]({{< ref "/diy/trailer/index.html" >}})
+If you would like to build a trailer (like the one in the above video) for your car, [the instructions are available here](/cruisin/diy/trailer/index.html)
 
-If you have any questions, comments or feedback please [contact us]({{< ref "contact/index.html" >}}).
+If you have any questions, comments or feedback please [contact us](/cruisin/contact/index.html).
+
+### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

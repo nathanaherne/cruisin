@@ -36,3 +36,5 @@ Below are 3 more examples of what your seat frame could look like. You will noti
 ### Next section is [Cleaning frame](/cruisin/diy/cleaning-frame/index.html)
 
 ### Previous section is [Seat & floor plate](/cruisin/diy/seat-floor/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

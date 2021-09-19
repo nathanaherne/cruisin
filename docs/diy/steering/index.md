@@ -34,3 +34,5 @@ If you wish to use an electric bike throttle, you will need to use round tubing 
 ### Next section is [Parts Required](/cruisin/diy/parts-required/index.html)
 
 ### Previous section is [Seat Frame](/cruisin/diy/seat-frame/index.html)
+
+### [Start Over](/cruisin/diy/index.html)

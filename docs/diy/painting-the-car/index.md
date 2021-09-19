@@ -27,3 +27,9 @@ When you have finished painting, your car should look something like this
 <img src="https://i.imgur.com/Z4cqhoJ.jpg">
 <br>
 <br>
+
+### Next section is [Seat Frame](/cruisin/diy/steering/index.html)
+
+### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
+
+### [Start Over](/cruisin/diy/index.html)
