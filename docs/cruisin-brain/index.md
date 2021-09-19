@@ -12,7 +12,7 @@ publish: True
 
 # Cruisin Brain
 
-The Cruisin Brain is a combination of [hardware](/cruisin-brain/index.md#hardware) and [software](/cruisin-brain/index.md#software), which when combined gives your electric car its own brain.
+The Cruisin Brain is a combination of [hardware](index.md#hardware) and [software](index.md#software), which when combined gives your electric car its own brain.
 
 # Cruisin Brain Features
 
@@ -32,9 +32,9 @@ The Cruisin Brain was created to support the needs of different vehicles, vehicl
 
 ### Cruisin Brain Software
 
-[The Cruisin Brain software is available here](https://github.com/nathanaherne/cruisin-brain)
+[The Cruisin Brain software is available here](https://github.com/nathanaherne/cruisin/tree/master/cruisin-brain)
 
-The Cruisin Brain software is [configured in the file settings.h, available here](https://github.com/nathanaherne/cruisin-brain/blob/master/settings.h). All configuration options are detailed in this file, though we admit that without some kind of coding knowledge it may be difficult to configure.
+The Cruisin Brain software is [configured in the file settings.h, available here](https://github.com/nathanaherne/cruisin/tree/master/cruisin-brain/settings.h). All configuration options are detailed in this file, though we admit that without some kind of coding knowledge it may be difficult to configure.
 
 We are currently developing a version of the Cruisin Brain that can be configured from your mobile device.
 
@@ -64,7 +64,7 @@ The Cruisin Brain OLED has its own microcontroller. The Cruisin Brain Mainboard 
 
 The Cruisin Brain AHRS has its own microncontroller. It sends all of its information to the Cruisin Brain Mainboard for final processing and integration with other sensors and settings
 
-The Cruisin Brain AHRS [is used to provide a number of new safety features](/cruisin-brain/futureFeatures.md) as well drive by wire.
+The Cruisin Brain AHRS [is used to provide a number of new safety features](/cruisin-brain/futureFeatures/index.md) as well drive by wire.
 
 ### Other uses for the Cruisin Brain
 
@@ -78,4 +78,4 @@ The Cruisin Brain is not just for the Cruisin Electric Car but is suitable for m
 6. ATV's
 7. Children's electric cars
 
-[Read more about how you can use the Cruisin Brain in these vehicles](/cruisin-brain/otherUses.md)
+[Read more about how you can use the Cruisin Brain in these vehicles](/cruisin-brain/otherUses/index.md)
