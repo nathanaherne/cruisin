@@ -22,7 +22,7 @@ If you would like to build a trailer (like the one in the above video) for your 
 
 If you have any questions, comments or feedback please [contact us](/cruisin/contact/index.html).
 
-### next section is [Trailer](/cruisin/diy/trailer/index.html)
+### Next section is [Trailer](/cruisin/diy/trailer/index.html)
 
 ### Previous section is [Painting](/cruisin/diy/painting-the-car/index.html)
 

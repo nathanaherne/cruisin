@@ -10,9 +10,11 @@ author: Nathan Aherne
 publish: True
 ---
 
+# Cruisin Brain
+
 ![Banner image](/banner.jpeg){:class="img-responsive"}
 
-# Cruisin Brain
+Above image is how the Cruisin Brain was initially coded and tested.
 
 The Cruisin Brain is a combination of [hardware](index.md#cruisin-brain-hardware) and [software](index.md#cruisin-brain-software), which when combined gives your electric car its own brain.
 

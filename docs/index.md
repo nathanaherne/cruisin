@@ -6,15 +6,13 @@ description: Home page
 ![Five children on their electric cars](/five-kids-and-cars.jpg){:class="img-responsive"}
 <br/><br/>
 
-# ------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 
-# Build a Cruisin Brain or Cruisin Electric Car
+# [Build Cruisin Brain](/cruisin/cruisin-brain/index.md)
 
-## [Check out Cruisin Brain](/cruisin-brain/index.md)
+# [Build Cruisin Electric Car](/cruisin/diy/index.md)
 
-## [Checkout Cruisin Electric Car](/diy/index.md)
-
-# ------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 
 ## Cruisin Brain into a Cruisin Electric Car equals
 

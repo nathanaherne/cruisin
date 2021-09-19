@@ -66,8 +66,6 @@ You should now have a trailer that looks just like this
 <br>
 <br>
 
-### Next section is [Parts required](/cruisin/diy/parts-required/index.html)
-
-### Previous section is [Build Overview](/cruisin/diy/build-overview/index.html)
+### Previous section is [Finished](/cruisin/diy/finished/index.html)
 
 ### [Start Over](/cruisin/diy/index.html)

@@ -25,7 +25,7 @@ In the below photo below, the seat and floor plate are not attached to the car. 
 
 **You might find yourself wanting to paint the plywood and vehicle at this point but it is best if you wait until you have completed everything before painting the plywood or vehicle**
 
-### Next section is [Cleaning frame](/cruisin/diy/cleaning-frame/index.html)
+### Next section is [Cleaning frame](/cruisin/diy/cleanup-frame/index.html)
 
 ### Previous section is [Strip Mobility Scooter](/cruisin/diy/strip-mobility-scooter/index.html)
 
