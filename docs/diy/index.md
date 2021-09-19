@@ -46,7 +46,7 @@ Table of Contents
 - [Tools required](/cruisin/diy/tools-required/index.md)
 - [Parts required](/cruisin/diy/parts-required/index.md)
 - [Strip the mobility scooter](/cruisin/diy/strip-mobility-scooter/index.md)
-- [Seat frame](/cruisin/diy/cruisin/diy/seat-frame/index.md)
+- [Seat frame](/cruisin/diy/seat-frame/index.md)
 - [Steering](/cruisin/diy/steering/index.md)
 - [Seat and floor plate](/cruisin/diy/seat-floor/index.md)
 - [Cleaning frame](/cruisin/diy/cleanup-frame/index.md)
