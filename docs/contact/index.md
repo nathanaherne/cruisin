@@ -1,12 +1,15 @@
-+++
-title = "Contact Us"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Contact Us
+description: Cruisin, awesome electric vehiclles
 
-draft = false
-author = "Nathan Aherne"
-+++
+categories:
+tags:
+
+author: Nathan Aherne
+
+publish: True
+---
+![Banner image](banner.jpg){:class="img-responsive"}
 
 Cruisin Co operates out of Brisbane Australia.
 

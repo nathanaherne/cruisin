@@ -1,12 +1,15 @@
-+++
-title = "About Us"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: About Us
+description: Cruisin, awesome electric vehiclles
 
-draft = false
-author = "Nathan Aherne"
-+++
+categories:
+tags:
+
+author: Nathan Aherne
+
+publish: True
+---
+![Banner image](banner.jpg){:class="img-responsive"}
 
 Cruisin Co was started by Nathan Aherne, this is his account of how Cruisin Co came to be:
 
@@ -47,7 +50,7 @@ The car on the left is the pedal car I failed to turn into an electric car and o
 
 Once the kids in the neighborhood realized that the electric car wasn't a one off, they all wanted one too. For Christmas 2017, I made 5 more cars for the kids in our neighborhood. While building them, I included the parents of the children who were getting them for Christmas, which was a great experience for them. It also made the cars that much more special for their children.
 
-While I was building these 5 cars, I decided to build a custom computer and software to control the cars. One request the children had made, before I started building these cars, was cruise control, which wasn't possible without a computer and custom software. After I wrote the software, [I made it available to everyone for free](https://github.com/nathanaherne/ev-control-system), I also submitted a reddit article detailing the build of the cars. I thought that this would be enough to help others to build these cars....
+While I was building these 5 cars, I decided to build a custom computer and software to control the cars. One request the children had made, before I started building these cars, was cruise control, which wasn't possible without a computer and custom software. After I wrote the software, [I made it available to everyone for free](https://github.com/nathanaherne/cruisin), I also submitted a reddit article detailing the build of the cars. I thought that this would be enough to help others to build these cars....
 
 {{< figure src="five-kids-and-cars.jpg" title="Five kids with their cars" >}}
 
