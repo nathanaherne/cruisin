@@ -1,14 +1,15 @@
-+++
-title = "Tools required"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Tools required
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 90
-+++
+author: Nathan Aherne
+
+publish: True
+---
+![Banner image](banner.jpg){:class="img-responsive"}
 
 # Tools required
 
@@ -25,3 +26,7 @@ Turning a mobility scooter into a Cruisin Electric car does not take many tools.
 You will probably need other things like a pencil, spirit level, screw drivers, spanners, allen keys etc.
 
 If you do not have some of the power tools above, this project might be a good excuse to buy them :-)
+
+### Next section is [Tools required](/diy/tools-required/index.md)
+
+### Previous section is [Build Overview](/diy/build-overview/index.md)

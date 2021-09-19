@@ -9,17 +9,17 @@ author: Nathan Aherne
 
 publish: True
 ---
-![Banner image](/banner.jpg){:class="img-responsive"}
+![Banner image](banner.jpg){:class="img-responsive"}
 
 Our mission at Cruisin is to make awesome electric cars available to everyone. We have put these instructions online towards making that mission possible. Building a Cruisin electric car is a great project to do with children, doing so promote an interest in [STEM](https://en.wikipedia.org/wiki/Science,_technology,_engineering,_and_mathematics) and teaches them driving skills. They are a great replacement for motorised gokarts as they are almost silent.
 
-It is possible to build the Cruisin Electric Car in a single day, excluding painting and as long as you have all [parts](parts-required/index.md) and [tools](tools-required/index.md) required.
+It is possible to build the Cruisin Electric Car in a single day, excluding painting and as long as you have all [parts](/diy/parts-required/index.md) and [tools](/diy/tools-required/index.md) required.
 
-You should expect to outlay approximately $300 (AUD) to build your own version of the Cruisin Electric Car. The total cost does depends on how much you spend on your mobility scooter and the amount of bling you add to your car.
+You should expect to outlay approximately $300 (Australian Dollars) to build your own version of the Cruisin Electric Car. The total cost does depends on how much you spend on your mobility scooter and the amount of bling you add to your car.
 
-These cars have a top speed of approximately 15km an hour, which is quite fast, especially in turns. The Cruisin Brain allows you to limit the top speed. We recommend limiting top speed to a little faster than fast walking pace.
+These cars have a top speed of approximately 15km an hour, which is quite fast, especially in turns. The Cruisin Brain allows you to limit the top speed. We recommend limiting top speed to a little faster than fast walking pace, which is approx 5km per hour.
 
-We tested the design of the Cruisin Electric car and the [Cruisin Brain](cruisin-brain/index.md) that is at the heart of every Cruisin Electric Car for over a year before we made these instructions available.
+We tested the design of the Cruisin Electric car and the [Cruisin Brain](/cruisin-brain/index.md) that is at the heart of every Cruisin Electric Car for over a year before we made these instructions available.
 
 
 **The basic process of building the Cruisin Electric car is:**
@@ -42,18 +42,18 @@ We are not responsbile for anything that occurs as a result of you using these i
 
 Table of Contents
 
-- [Build Overview](build-overview/index.md)
-- [Tools required](tools-required/index.md)
-- [Parts required](parts-required/index.md)
-- [Strip the mobility scooter](strip-mobility-scooter/index.md)
-- [Seat frame](seat-frame/index.md)
-- [Steering](steering/index.md)
-- [Seat and floor plate](seat-floor/index.md)
-- [Cleaning frame](cleanup-frame/index.md)
-- [Priming frame](priming-frame/index.md)
-- [Electronics](electronics/index.md)
-- [Painting](painting-the-car/index.md)
-- [Finished](finished/index.md)
-- [Trailer](trailer/index.md)
+- [Build Overview](/diy/build-overview/index.md)
+- [Tools required](/diy/tools-required/index.md)
+- [Parts required](/diy/parts-required/index.md)
+- [Strip the mobility scooter](/diy/strip-mobility-scooter/index.md)
+- [Seat frame](/diy/seat-frame/index.md)
+- [Steering](/diy/steering/index.md)
+- [Seat and floor plate](/diy/seat-floor/index.md)
+- [Cleaning frame](/diy/cleanup-frame/index.md)
+- [Priming frame](/diy/priming-frame/index.md)
+- [Electronics](/diy/electronics/index.md)
+- [Painting](/diy/painting-the-car/index.md)
+- [Finished](/diy/finished/index.md)
+- [Trailer](/diy/trailer/index.md)
 
 [Checkout Cruisin Brain](cruisin-brain/index.md)

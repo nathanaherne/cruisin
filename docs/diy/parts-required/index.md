@@ -1,14 +1,15 @@
-+++
-title = "Parts required"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Parts required
+description: Build your own Crusin Electric Car
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 80
-+++
+author: Nathan Aherne
+
+publish: True
+---
+![Banner image](banner.jpg){:class="img-responsive"}
 
 # Parts Required
 
@@ -123,5 +124,5 @@ Future versions of the [Cruisin Brain](/cruisin-brain/index.md) will (along with
 1. Metal primer paint for any spots that have bare metal
 2. Paint for metal and wood to make your new car look awesome
 3. 20mm square steel tube to create the structure for the seat
-3. 20mm square steel tube or round tube (depending on your throttle control choice), [see here for more details](steering.md)
+3. 20mm square steel tube or round tube (depending on your throttle control choice), [see here for more details](/diy/steering/index.md)
 4. Standard bicycle grips for the steering bars

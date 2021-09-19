@@ -1,14 +1,14 @@
-+++
-title = "Other uses"
-description = "An overview of cloud computing platforms and their benefits"
-categories = [""]
-tags = [""]
+---
+title: Other uses
+description: Cruisin Brain Other uses
 
-draft = false
-author = "Nathan Aherne"
+categories:
+tags:
 
-weight = 30
-+++
+author: Nathan Aherne
+
+publish: True
+---
 
 The Cruisin Brain contains many more features than any go kart, golf cart, mobility scooter, electric wheelchair or child's electric car. It can interface with off the shelf components easily, so you do not need to use specialized motor controllers, control systems or other proprietary parts. It is extremely configurable to allow you to customize your vehicle to the way you need it.
 

@@ -10,6 +10,8 @@ author: Nathan Aherne
 publish: True
 ---
 
+![Banner image](/banner.jpeg){:class="img-responsive"}
+
 # Cruisin Brain
 
 The Cruisin Brain is a combination of [hardware](index.md#cruisin-brain-hardware) and [software](index.md#cruisin-brain-software), which when combined gives your electric car its own brain.
