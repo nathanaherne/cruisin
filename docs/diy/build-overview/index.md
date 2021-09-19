@@ -5,7 +5,7 @@ description: Build your own electric car
 
 # Build your own Cruisin Electric Car
 
-It is possible to build the Cruisin Co Electric Car in a single day (excluding painting and as long as we have all parts available) and [we use the same tools listed here]({{< ref "/diy/tools-required/index" >}})
+It is possible to build the Cruisin Co Electric Car in a single day (excluding painting and as long as we have all parts available) and [we have the tools listed here](/cruisin/diy/tools-required/index.md)
 
 (toolsRequired.md).
 
@@ -13,7 +13,7 @@ You should expect to outlay approximately $300 (AUD) to build your own version o
 
 These cars have a top speed of approximately 15km an hour, which is quite fast, especially in turns. The Cruisin Brain allows you to limit the top speed. We recommend limiting top speed to a little faster than fast walking pace.
 
-We tested the design of the Cruisin Electric car and the [Cruisin Brain](/cruisin-brain/index.md) that is at the heart of every Cruisin Co Electric Car for over a year before we made these instructions available.
+We tested the design of the Cruisin Electric car and the [Cruisin Brain](/cruisin/cruisin-brain/index.md) that is at the heart of every Cruisin Co Electric Car for over a year before we made these instructions available.
 
 
 **The basic process of building the Cruisin Electric car is:**
@@ -32,4 +32,4 @@ Mobility scooters are designed to carry large adults (up to 200kg), this has the
 
 We are not responsbile for anything that occurs as a result of you using these instructions.
 
-### Next section is [Tools required](/diy/tools-required/index.md)
+### Next section is [Tools required](/cruisin/diy/tools-required/index.md)

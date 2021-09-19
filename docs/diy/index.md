@@ -56,4 +56,4 @@ Table of Contents
 - [Finished](/cruisin/diy/finished/index.md)
 - [Trailer](/cruisin/diy/trailer/index.md)
 
-[Checkout Cruisin Brain](/cruisin/diy/cruisin-brain/index.md)
+[Checkout Cruisin Brain](/cruisin/cruisin-brain/index.md)
