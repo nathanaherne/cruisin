@@ -31,3 +31,5 @@ How to achieve the above is detailed extensively in the following pages.
 Mobility scooters are designed to carry large adults (up to 200kg), this has the benefit of one car being able to transport several children at once. The negative of this is that these cars are very strong and have the ability to push a child over or even drive over them. Please make sure drivers of these cars are aware of the need to drive safely at all times.
 
 We are not responsbile for anything that occurs as a result of you using these instructions.
+
+### Next section is [Tools required](/diy/tools-required/index.md)
