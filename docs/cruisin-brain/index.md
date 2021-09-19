@@ -12,13 +12,13 @@ publish: True
 
 # Cruisin Brain
 
-The Cruisin Brain is a combination of [hardware](index.md#hardware) and [software](index.md#software), which when combined gives your electric car its own brain.
+The Cruisin Brain is a combination of [hardware](index.md#cruisin-brain-hardware) and [software](index.md#cruisin-brain-software), which when combined gives your electric car its own brain.
 
 # Cruisin Brain Features
 
 The Cruisin Brain was created to support the needs of different vehicles, vehicle configurations and disabled and able bodied users. It was also created to make building, modifying or upgrading an electric vehicle as cheap and safe as possible.
 
-### Current Features
+## Current Features
 
 1. Control of maximum forward speed and the speed in which your vehicle accelerates when going forward.
 2. Control of maximum reverse speed and the speed in which your vehicle accelerates when going in reverse.
@@ -28,9 +28,9 @@ The Cruisin Brain was created to support the needs of different vehicles, vehicl
 6. Ability to reverse motor direction if the motor(s) are running backwards.
 7. Several inbuilt safety features.
 
-[Checkout the new features we are working to add to the Cruisin Brain software and hardware.](/futureFeatures/index.md)
+[Checkout the new features we are working to add to the Cruisin Brain software and hardware.](/cruisin-brain/future-features/index.md)
 
-### Cruisin Brain Software
+## Cruisin Brain Software
 
 [The Cruisin Brain software is available here](https://github.com/nathanaherne/cruisin/tree/master/cruisin-brain)
 
@@ -38,11 +38,11 @@ The Cruisin Brain software is [configured in the file settings.h, available here
 
 We are currently developing a version of the Cruisin Brain that can be configured from your mobile device.
 
-### Cruisin Brain Hardware
+## Cruisin Brain Hardware
 
 The Cruisin Brain is made up of several different microcontrollers (tiny computers) to maximize safety and features:
 
-#### Mainboard
+### Mainboard
 
 This is the main computer of the Cruisin Brain, it receives data from and manages all other Cruisin Brain microcontrollers and electronics. It is currently comprised of:
 
@@ -52,7 +52,7 @@ This is the main computer of the Cruisin Brain, it receives data from and manage
 4. 5k resistors to pull inputs to ground
 5. 0.1uf capacitor between throttle and ground
 
-#### OLED
+### OLED
 
 The Cruisin Brain OLED has its own microcontroller. The Cruisin Brain Mainboard sends all the vehicles vital information to the Cruisin Brain OLED so that it can process and display it.
 
@@ -60,13 +60,13 @@ The Cruisin Brain OLED has its own microcontroller. The Cruisin Brain Mainboard 
 <br>
 <br>
 
-#### AHRS
+### AHRS
 
 The Cruisin Brain AHRS has its own microncontroller. It sends all of its information to the Cruisin Brain Mainboard for final processing and integration with other sensors and settings
 
-The Cruisin Brain AHRS [is used to provide a number of new safety features](futureFeatures/index.md) as well drive by wire.
+The Cruisin Brain AHRS [is used to provide a number of new safety features](future-features/index.md) as well drive by wire.
 
-### Other uses for the Cruisin Brain
+## Other uses for the Cruisin Brain
 
 The Cruisin Brain is not just for the Cruisin Electric Car but is suitable for many small electric vehicles
 
@@ -78,4 +78,4 @@ The Cruisin Brain is not just for the Cruisin Electric Car but is suitable for m
 6. ATV's
 7. Children's electric cars
 
-[Read more about how you can use the Cruisin Brain in these vehicles](otherUses/index.md)
+[Read more about how you can use the Cruisin Brain in these vehicles](other-uses/index.md)
