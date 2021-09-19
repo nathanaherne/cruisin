@@ -42,8 +42,8 @@ We are not responsbile for anything that occurs as a result of you using these i
 
 Table of Contents
 
-- [Build Overview](/docs/diy/build-overview/index.md)
-- [Tools required](/docs/diy/tools-required/index.md)
+- [Build Overview](build-overview/index.md)
+- [Tools required](tools-required/index.md)
 - [Parts required](/docs/diy/parts-required/index.md)
 - [Strip the mobility scooter](/docs/diy/strip-mobility-scooter/index.md)
 - [Seat frame](/docs/cruisin/diy/seat-frame/index.md)
