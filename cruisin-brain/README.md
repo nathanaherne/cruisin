@@ -8,9 +8,9 @@ that is entirely on you.
 -------------------------------------------------------------------------------------------------------
 # OVERVIEW
 
-This software was developed for Arduino to convert a mobility scooter into an electric car for a child.
+This software was developed for Arduino to convert a mobility scooter into an electric car for a child. It could be used for any electric car you wish. The Cruisin Brain was created to receive inputs from analog and digital control devices controlled by the driver and turn those inputs into control commands for a motor controller and things like lights and OLED Screens.
 
-This software was developed to take input from two momentary switches (buttons) (named Right and Left) and translate button pushes into motion.
+At its most simplest this software was developed to take input from two momentary switches (buttons) (named Right and Left) and translate button pushes into motion.
 
 - Pressing the Right button, results in the car moving forwards
 - Pressing both the Right and Left buttons, results in the car moving reverse
@@ -24,7 +24,7 @@ because the children I created these cars for (7 families in our neighborhood so
 
 ## WARNING ON USING MOBILITY SCOOTERS AS KIDS CARS
 Mobility scooters are designed to carry large adults (up to 200kg), this has the benefit of one car being able to transport several children at once.
-The negative of this is that these cars are very strong and have the ability to push a small child over or even drive over them, which I have been unable to solve programatically. 
+The negative of this is that these cars are very strong and have the ability to push a small child over or even drive over them, which I have been unable to solve programmatically. 
 
 <br>
 
@@ -32,13 +32,15 @@ The negative of this is that these cars are very strong and have the ability to 
 
 # MOTOR CONTROLLERS SUPPORTED
 
-This software was developed to interface with several motor controllers. IF you can justify the extra money, I recommend using a General Purpose Motor Controller as it makes the whole process much simpler.
+This software was developed to interface with several motor controllers. IF you can justify the extra money, I recommend using a General Purpose Motor Controller as it makes the whole process much simpler and significantly more configurable.
 
 ## Mobility scooter motor controllers that work with digital potentiometers
 
 I have tested 7 controllers so far and the following controllers work with digital potentiometers
 
 1. Dynamic Controls R-Series
+
+All other motor controllers from mobility scooters that I tested, did not work with digital potentiometers.
 
 ### NOTE:
 If you find the motor controller from your donor mobility scooter will not work with a digital potentiometer, you can use the wigwag from the mobility scooter to control forward/reverse.
@@ -57,13 +59,13 @@ The input for speed control on these controllers expect a voltage range between 
 1. Dyanmic Controls Rhino - Blue in color (does not work)
 2. PG Drives Solo - Black and Silver versions (intermittantly)
 
-In my experience, Dynamic Controls Support are easier to work with than PG Drives (owned by Curtiss Wright) Support. Both companies Support people respond very quickly but PG Drives seem reluctant to provide much technical information about their product. Dynamic Controls on the other hand post full technical manuals on the internet for their contollers.
+In my experience, Dynamic Controls Support are easier to work with than PG Drives (owned by Curtiss Wright) Support. Both companies Support people respond very quickly but PG Drives seem reluctant to provide much technical information about their product. Dynamic Controls on the other hand post full technical manuals on the internet for their controllers.
 
 ### NOTE:
 1. When using any mobility scooter controller, make sure you keep all the original electronics from your donor mobility scooter. This will allow you to get status indications from the controllers and determine the wiring the controller expects to see.
 2. Having a multimeter will help immensely to work out expected wiring when using a mobility scooter motor controller.
 
-## General purpose motor controllers
+## General purpose motor controllers that work with Cruisin Brain
 
 1. Dimension Engineering Syren50 (single motor control)
 2. Dimension Engineering Sabertooth2x32 (dual motor control)
