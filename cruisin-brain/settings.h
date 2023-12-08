@@ -8,17 +8,17 @@ boolean reverseMotorDirection = true; // true OR false
 
 ///////////////////////////////////////////////
 // Throttle
-// normal = normal car throttle
+// normal = normal car throttle: essentially any analog output, even a momentary switch
 // joystick = forward joystick - forward, middle - stop, reverse joystick = reverse
 // ppm = ppm rc input
 // pwm = pwm rc input
 String throttleType = "Normal";
 
 // Speed and Acceleration settings
-int maxForwardPercent = 75; // Maximum percentage of throttle while going Forward
+int maxForwardPercent = 75; // Maximum percentage of full speed while going Forward
 int forwardRampPercent = 50; // Forward acceleration percent -> larger value = slower acceleration
 
-int maxReversePercent = 40; // Maximum percentage of throttle while going Reverse
+int maxReversePercent = 40; // Maximum percentage of full speed while going Reverse
 int reverseRampPercent = 50; // Reverse acceleration percent -> larger value = slower acceleration
 
 // Brake Type
@@ -29,19 +29,19 @@ int brakeRampPercent = 10; // Brake acceleration percent -> larger value = slowe
 ///////////////////////////////////////////////
 // Cruise Control 
 // Off, Throttle, Button
-String cruiseControlType = "Throttle";
+String cruiseControlType = "Throttle"; // Throttle sets cruiseControl by time at full throttle, Button sets cruiseControl on push
 
-int maxCruiseControlPercent = 85; // Maximum Cruise Control forward throttle (percentage) -> only works when MC_forward = MC_cruise_control
+int maxCruiseControlPercent = 85; // Maximum Cruise Control forward speed (percentage)
 int cruiseControlRampPercent = 50; // Cruise Control acceleration speed (milliseconds), larger value = slower acceleration
 
-// Only active when MC_cruise_control = MC_forward
+// These are only required while cruiseControlType is "Throttle"
 int cruiseControl_MC_throttle_EnableDelaySec = 30; // Seconds MC_throttle must be true for Cruise Control to activate
 int cruiseControl_MC_throttle_DisableDelaySec = 5; // Seconds after CruiseControl enabled before MC_throttle can disable it
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
 // POWER STEERING
-// off, ppm, pwm
+// off, ppm, pwm - this is not implemented
 #define off // MANUAL CONTROL
 
 ////////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ const int *MC_other1 = &MC_other1_pin; // Other (analog)
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
-// Battery & current
+// Battery & current - this is not implemented
 int batteryVoltageWarningPercent = 20; // voltage at which it shows a warning
 float lipoCellCount = 6;
 int currentWarningAmps = 20;
@@ -90,7 +90,7 @@ int currentWarningAmps = 20;
 // DO NOT CHANGE THINGS BELOW HERE
 
 ////////////////////////////////////////////////////////////////////////
-// Lithium battery settings
+// Lithium battery settings - this is not implemented
 const float lipoCellVoltMax = 4.2;
 const float lipoCellVoltMin = 3.7;
 ////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@ const int minCruiseControlPercent = 50; //Throttle percent above which Cruise Co
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
-// Enable or Disable debugging output - turn off when not being used Serial print on Arduino is blocking
+// Enable or Disable debugging output - turn off when not being used -> Serial print on Arduino is blocking
 #define DEBUG_ON
 // OLED -> OLED connected via serial connection
 // #define OLED
