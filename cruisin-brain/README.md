@@ -52,9 +52,9 @@ NOTE: To use the Syren50 with a mobility scooter you will need to
 
 ### Sabertooth2x32
 
-The Sabertooth2x32 has the ability to control two electric motors (among a number of other features). This software has been designed to support the Sabertooth2x32. The main issue with using the Sabertooth2x32 with two rear motors is there will be no differential. I do not think it is a great idea to use the Sabertooth2x32 for two motors, even though it is possible. The Sabertooth2x32 is useful for people who would like to use it to control an electronic brake, though at this time, I have yet to implement or test this functionality.
+The Sabertooth2x32 has the ability to control two electric motors (among a number of other features). This software has been designed to support the Sabertooth2x32. The main issue with using the Sabertooth2x32 with two rear motors is there will be no differential, ideally I would implement an electronic differential which would make things better. The Sabertooth2x32 is useful can be used to control a single motor and to control the electronic brake, though at this time, I have yet to implement or test this functionality.
 
-The Sabertooth 2x32 has the ability to engage/disengage the electronic brake that often find on mobility scooter motors so you can leave it attached if you wish. This is a good safety feature, like a hand brake in a car but it is not required.
+The Sabertooth 2x32 has the ability to engage/disengage the electronic brake that you often find on mobility scooter motors so you can leave it attached if you wish. This is a good safety feature, like a hand brake in a car but it is not required.
 
 <br>
 
@@ -62,10 +62,10 @@ The Sabertooth 2x32 has the ability to engage/disengage the electronic brake tha
 
 # WIRING
 
-The software expects the following wiring connections (the Arduino pins can be changed in settings.h):
+The software expects the following wiring connections (the Cruisin Brain pins can be changed in settings.h):
 
-1. Right button - digital pin 5 and Gnd on Arduino board (pushing the button grounds the pin)
-2. Left button - digital pin 7 and Gnd on Arduino board (pushing the button grounds the pin)
+1. Right button - digital pin 5 and Gnd on Cruisin Brain board (pushing the button grounds the pin)
+2. Left button - digital pin 7 and Gnd on Cruisin Brain board (pushing the button grounds the pin)
 
 If using Syren50 or Sabertooth2x32
 
