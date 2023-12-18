@@ -11,7 +11,7 @@ void setupMotorControllers() {
     // Start the Serial interface for the Syren50
   #if defined(MOT_SYREN50)
     Serial1.begin(9600);
-    ST.setTimeout(driverTimeout); // Controller must recieve commands every X milliseconds or it will stop motors
+    ST.setTimeout(driverTimeout); // Controller must receive commands every X milliseconds or it will stop motors
     ST.setRamping(0); //Disable ramping as it is done within this software
     //ST.autobaud(); // Send Autobaud command
   #endif
@@ -19,7 +19,7 @@ void setupMotorControllers() {
   // Start the Serial interface for the Sabertooth2x32
   #if defined(MOT_SABER2x32)
     Serial1.begin(9600);
-    ST.setTimeout(driverTimeout); // Controller must recieve commands every X milliseconds or it will stop motors
+    ST.setTimeout(driverTimeout); // Controller must receive commands every X milliseconds or it will stop motors
     ST.setRamping(0); //Disable ramping as it is done within this software
   #endif
 

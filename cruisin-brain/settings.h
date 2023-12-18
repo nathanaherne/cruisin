@@ -8,13 +8,15 @@ boolean reverseMotorDirection = true; // true OR false
 
 ///////////////////////////////////////////////
 // Throttle
-// normal = normal car throttle: essentially any analog output, even a momentary switch
+// Options are:
+// normal = normal car throttle: essentially any analog or digital input, even a momentary switch
 // joystick = forward joystick - forward, middle - stop, reverse joystick = reverse
-// ppm = ppm rc input
+// ppm = ppm rc input -> throttle & steering (if POWER STEERING enabled)
 // pwm = pwm rc input
 String throttleType = "Normal";
 
 // Speed and Acceleration settings
+// Options are: between 0 & 100
 int maxForwardPercent = 75; // Maximum percentage of full speed while going Forward
 int forwardRampPercent = 50; // Forward acceleration percent -> larger value = slower acceleration
 
@@ -22,13 +24,16 @@ int maxReversePercent = 40; // Maximum percentage of full speed while going Reve
 int reverseRampPercent = 50; // Reverse acceleration percent -> larger value = slower acceleration
 
 // Brake Type
-// Manual or Automatic
+// Options are: 
+// 1. Manual
+// 2. Automatic
 String brakeType = "Automatic";
+// Brake acceleration percent required for all brake types.
 int brakeRampPercent = 10; // Brake acceleration percent -> larger value = slower acceleration
 
 ///////////////////////////////////////////////
 // Cruise Control 
-// Off, Throttle, Button
+// Options: off, Throttle, Button
 String cruiseControlType = "Throttle"; // Throttle sets cruiseControl by time at full throttle, Button sets cruiseControl on push
 
 int maxCruiseControlPercent = 85; // Maximum Cruise Control forward speed (percentage)
@@ -40,17 +45,29 @@ int cruiseControl_MC_throttle_DisableDelaySec = 5; // Seconds after CruiseContro
 ////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////
-// POWER STEERING
-// off, ppm, pwm - this is not implemented
-#define off // MANUAL CONTROL
-
-////////////////////////////////////////////////////////////////////////
-// Motor Controller Options
+// Drive Motor Controller Options
 // Options are:
 // 1. MOT_SYREN50 - Dimension Engineering Syren50 motor controller
-// 2. MOT_SABER2x32 - Dimension Engineering Sabertoo2th 2x32 motor controller
+// 2. MOT_SABER2x32 - Dimension Engineering Sabertooth 2x32 motor controller
 // 3. MOT_SPARK - Rev Robotics Spark Motor Controller
 #define MOT_SYREN50
+// Must be the same for all Drive Motor Configurations below
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+// Drive Motor Configuration Options -> Not implemented
+// Options are:
+// 1. Single - single motor for rear wheels or MOT_SABER2x32 for 2 rear motors
+// 2. 2x2 - motors on two rear wheels using two separate motor controllers
+// 4. 4x4 - motors on four wheels using four separate motor controllers
+#define MOT_SINGLE
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+// Power steering Motor Controller Options -> Not implemented
+// Options are:
+// 1. POW_OFF - No Power steering
+// 2. POW_SYREN50 - Dimension Engineering Syren50 motor controller
+// 3. POW_SPARK - Rev Robotics Spark Motor Controller
+#define POW_OFF
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 // Board Options
@@ -60,10 +77,9 @@ int cruiseControl_MC_throttle_DisableDelaySec = 5; // Seconds after CruiseContro
 // 4. BOARD_BLACKPILL
 #define BOARD_BLACKPILL
 ////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////
 // MANUAL CONTROL MAPPING
-// Changes to these requires a restart
+// Changes to these require a restart of the board
 #include "pins.h"
 const int *MC_throttle = &MC_throttle_pin;
 //const int *MC_reverse = &MC_forward_pin;
@@ -78,7 +94,6 @@ const int *MC_head = &MC_head_pin; // Headlights (digital)
 const int *MC_hazard = &MC_hazard_pin; // Other (analog)
 const int *MC_other1 = &MC_other1_pin; // Other (analog)
 ////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////
 // Battery & current - this is not implemented
 int batteryVoltageWarningPercent = 20; // voltage at which it shows a warning
@@ -90,11 +105,10 @@ int currentWarningAmps = 20;
 // DO NOT CHANGE THINGS BELOW HERE
 
 ////////////////////////////////////////////////////////////////////////
-// Lithium battery settings - this is not implemented
+// Lithium battery settings -> this is not implemented
 const float lipoCellVoltMax = 4.2;
 const float lipoCellVoltMin = 3.7;
 ////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////
 // Throttle Values
 const int throttleDeadband_min_Percent = 5; // Deadband at the bottom of the throttle input
@@ -102,7 +116,6 @@ const int throttleDeadband_max_Percent = 1; // Deadband at the top of throttle i
 const int throttleRangeMs = 25500; // Max milliseconds between full forward and full reverse
 const int minCruiseControlPercent = 50; //Throttle percent above which Cruise Control can be enabled by button
 ////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////
 // Enable or Disable debugging output - turn off when not being used -> Serial print on Arduino is blocking
 #define DEBUG_ON
@@ -110,10 +123,9 @@ const int minCruiseControlPercent = 50; //Throttle percent above which Cruise Co
 // #define OLED
 // HTTP WEBSERVER
 //#define HTTP
-// Inhibit Pin Ignore
+// Inhibit Pin Ignore - Inhibit Pin has Cruisin Brain send brake command to motor controllers and sits in infinite loop
 #define INHIBIT_IGNORE
 ////////////////////////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////////////////////
 // Button Debounce settings
 const int debounceSampleFrequencyHz = 1000; // Frequency that digital inputs checked

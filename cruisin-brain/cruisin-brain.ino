@@ -425,7 +425,7 @@ void cruiseControlForwardEnable(int targetThrottle, int currentThrottle, int for
 
 }
 
-// Calculate the target throttle
+// Calculate the target throttle -> the throttle value we are aiming for as opposed to the current throttle
 void calcTargetThrottle(int &targetThrottle, int currentThrottle, int forwardCommand, boolean throttleInputDigital, 
       int reverseCommand, boolean reverseEnableCommand, boolean noMotionCommanded, boolean brakeCommand, 
       boolean cruiseControlOn, boolean &cruiseControlFirstEnabled,
@@ -580,7 +580,7 @@ void increaseThrottle(unsigned long &prevMicros, unsigned int intervalMicros, in
       break;
       }
   }
-  // Send throttle command even if there is no update -> in essence a keepalive for the motor controller
+  // Send throttle command even if there is no update -> in essence a keepalive for the motor controller which are usually programmed to stop if no update sent
   sendThrottleCommand(currentThrottle);
 }
 
@@ -599,7 +599,7 @@ void reduceThrottle(unsigned long &prevMicros, unsigned int intervalMicros, int 
       break;
       }
   }
-  // Send throttle command even if there is no update -> in essence a keepalive for the motor controller
+  // Send throttle command even if there is no update -> in essence a keepalive for the motor controller which are usually programmed to stop if no update sent
   sendThrottleCommand(currentThrottle);
 
 }

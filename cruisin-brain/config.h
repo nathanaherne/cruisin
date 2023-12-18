@@ -10,7 +10,6 @@
   HardwareSerial Serial2(2);
 #endif
 
-
 ////////////////////////////////////////////////////////////////////////
 // SYREN50 MOTOR CONTROLLER
 #if defined(MOT_SYREN50)
