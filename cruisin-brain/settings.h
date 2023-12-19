@@ -3,9 +3,6 @@
 ////////////////////////////////////////////////////////////////////////
 // User definable variables while driving
 
-// Reverse motor direction
-boolean reverseMotorDirection = true; // true OR false
-
 ///////////////////////////////////////////////
 // Throttle
 // Options are:
@@ -48,10 +45,10 @@ int cruiseControl_MC_throttle_DisableDelaySec = 5; // Seconds after CruiseContro
 // Drive Motor Controller Options
 // Options are:
 // 1. MOT_SYREN50 - Dimension Engineering Syren50 motor controller
-// 2. MOT_SABER2x32 - Dimension Engineering Sabertooth 2x32 motor controller
+// 2. MOT_SABER2x32 - Dimension Engineering Sabertooth2x32 motor controller
 // 3. MOT_SPARK - Rev Robotics Spark Motor Controller
 #define MOT_SYREN50
-// Must be the same for all Drive Motor Configurations below
+// Must use the same controller for all Drive Motor Configurations below
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 // Drive Motor Configuration Options -> Not implemented
@@ -60,6 +57,12 @@ int cruiseControl_MC_throttle_DisableDelaySec = 5; // Seconds after CruiseContro
 // 2. 2x2 - motors on two rear wheels using two separate motor controllers
 // 4. 4x4 - motors on four wheels using four separate motor controllers
 #define MOT_SINGLE
+boolean reverseMotorDirection = true; // true OR false - Single option only
+// Below not implemented
+boolean reverseMotorDirectionRR = true; // true OR false - Rear Right - 2x2 & 4x4 options only
+boolean reverseMotorDirectionRL = true; // true OR false - Rear Left - 2x2 & 4x4 options only
+boolean reverseMotorDirectionFR = true; // true OR false - Front Right - 4x4 option only
+boolean reverseMotorDirectionFL = true; // true OR false - Front Left - 4x4 option only
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 // Power steering Motor Controller Options -> Not implemented

@@ -89,7 +89,7 @@ the corresponding pins on the digital potentiometer.
 
 You can configure Cruisin Brain in the settings.h file.
 
-The top of the file provides a number of configurable options for the software, including 
+The top of the file provides a number of configurable options for the software, including (but not limited to)
 
 1. Motor Controller options
 2. Reverse motor direction (change forward motion to reverse motion)
