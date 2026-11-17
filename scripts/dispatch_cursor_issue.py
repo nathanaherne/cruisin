@@ -168,8 +168,17 @@ def render_comment(
     links: list[tuple[str, str]] | None = None,
 ) -> str:
     agent_field = f" agent={agent_id}" if agent_id else ""
+    pr_field = ""
+    branch_field = ""
+    if links:
+        pr_url, branch_name = links[0]
+        pr_number = pr_url.rstrip("/").split("/pull/")[-1] if "/pull/" in pr_url else ""
+        if pr_number.isdigit():
+            pr_field = f" pr={pr_number}"
+        if branch_name and ">" not in branch_name and " " not in branch_name:
+            branch_field = f" branch={branch_name}"
     lines = [
-        f"<!-- cursor-issue-agent:v1 issue={issue} run={run_id} status={status}{agent_field} -->",
+        f"<!-- cursor-issue-agent:v1 issue={issue} run={run_id} status={status}{agent_field}{pr_field}{branch_field} -->",
         "### Cursor issue agent",
         f"- **Status:** {status}",
         f"- **Workflow run:** https://github.com/{repo}/actions/runs/{run_id}",
@@ -492,7 +501,11 @@ def main() -> int:
             run_id,
             "completed",
             agent_id=agent_id,
-            detail="Pull request opened. It is not merged and nothing was deployed.",
+            detail=(
+                "Pull request opened. This dispatcher does not merge or deploy. "
+                "The safe auto-merge workflow merges only a low-risk Cursor pull request "
+                "after Validate succeeds."
+            ),
             links=links,
         )
         return 0
