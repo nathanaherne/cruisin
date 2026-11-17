@@ -1,0 +1,22 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run automation tests
+        run: python3 -m unittest tests/dispatch_cursor_issue_test.py tests/cursor_automerge_test.py

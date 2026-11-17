@@ -162,6 +162,35 @@ class DedupeTest(unittest.TestCase):
     def test_marker_for_another_issue_is_ignored(self):
         self.assertEqual(self.decide("opened", [marker("running", 1, number=99)], number=1), "")
 
+    def test_an_open_cursor_pull_request_is_returned_for_that_issue_only(self):
+        pulls = [
+            {
+                "state": "open",
+                "head_ref": "cursor/issue-3-0089",
+                "head_repo": "nathanaherne/cruisin",
+                "html_url": "https://github.com/nathanaherne/cruisin/pull/4",
+            },
+            {
+                "state": "closed",
+                "head_ref": "cursor/issue-1-c8db",
+                "head_repo": "nathanaherne/cruisin",
+                "html_url": "https://github.com/nathanaherne/cruisin/pull/2",
+            },
+            {
+                "state": "open",
+                "head_ref": "cursor/issue-3-fork",
+                "head_repo": "someone/cruisin",
+                "html_url": "https://github.com/someone/cruisin/pull/8",
+            },
+        ]
+        self.assertEqual(
+            agent.open_issue_pull_request(pulls, 3, "nathanaherne/cruisin"),
+            "https://github.com/nathanaherne/cruisin/pull/4",
+        )
+        self.assertEqual(agent.open_issue_pull_request(pulls, 1, "nathanaherne/cruisin"), "")
+        self.assertEqual(agent.open_issue_pull_request(pulls, 8, "nathanaherne/cruisin"), "")
+        self.assertEqual(agent.open_issue_pull_request([pulls[2]], 3, "nathanaherne/cruisin"), "")
+
 
 class RenderingTest(unittest.TestCase):
     def test_comment_carries_the_machine_readable_marker_and_pull_request(self):
@@ -177,6 +206,8 @@ class RenderingTest(unittest.TestCase):
         parsed = agent.parse_marker(body)
         self.assertEqual(parsed["status"], "completed")
         self.assertEqual(parsed["issue"], "1")
+        self.assertEqual(parsed["pr"], "9")
+        self.assertEqual(parsed["branch"], "cursor/issue-1")
         self.assertIn("https://github.com/nathanaherne/techaus_com_au/pull/9", body)
         self.assertIn("https://cursor.com/agents/bc-123", body)
         self.assertNotIn("CURSOR_API_KEY", body)
