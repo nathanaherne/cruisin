@@ -1089,13 +1089,19 @@ def _detail_for(decision: dict, extra: str = "") -> str:
         parts.append("Risk: " + ", ".join(str(item) for item in reasons[:20]))
     if decision.get("reason") == "pages_not_triggered":
         parts.append(
-            "GitHub does not start a Pages build for a commit pushed by GITHUB_TOKEN. "
-            "The site source is master:/docs at https://nathanaherne.github.io/cruisin/. "
-            "There is no deploy credential in this repository. Add Actions secret "
-            "CRUISIN_PAGES_PUSH_TOKEN: a fine-grained personal access token for nathanaherne "
-            "with contents read and write on nathanaherne/cruisin only, from an account with "
-            "a verified email. No other permission. Then rerun Cursor safe auto-merge for this "
-            "pull request. Do not send the token in a comment or issue."
+            "This run had no PAGES_PUSH_TOKEN, so the merge used GITHUB_TOKEN. "
+            "GitHub does not start a Pages build for that commit. "
+            "The site source remains master:/docs at https://nathanaherne.github.io/cruisin/. "
+            "Owner action: while signed in as nathanaherne, open "
+            "https://github.com/settings/personal-access-tokens/new?name=CRUISIN_PAGES_PUSH_TOKEN"
+            "&description=Pages+merge+for+nathanaherne%2Fcruisin&target_name=nathanaherne"
+            "&contents=write, set repository access to only nathanaherne/cruisin, leave every "
+            "permission except Contents unset (Contents is Read and write; GitHub also adds "
+            "Metadata read), and generate the token from an account with a verified email. "
+            "Then open https://github.com/nathanaherne/cruisin/settings/secrets/actions/new "
+            "and save that value as Actions secret CRUISIN_PAGES_PUSH_TOKEN. "
+            "Rerun Cursor safe auto-merge for this pull request. "
+            "Do not paste the token into a comment or issue."
         )
     if extra:
         parts.append(extra)
