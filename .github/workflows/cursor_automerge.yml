@@ -1,0 +1,54 @@
+name: Cursor safe auto-merge
+
+# Runs the workflow file from the default branch after Validate completes.
+# It must not checkout the pull request head: that head is untrusted until the
+# gate below has passed, and a pull request must not be able to edit this gate.
+on:
+  workflow_run:
+    workflows: ["Validate"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Pull request number to evaluate"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  checks: read
+  statuses: read
+  deployments: read
+
+concurrency:
+  group: cursor-automerge-${{ github.event.workflow_run.pull_requests[0].number || github.event.workflow_run.head_sha || inputs.pr_number || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.event == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Merge low-risk Cursor pull request and verify Pages
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PAGES_PUSH_TOKEN: ${{ secrets.CRUISIN_PAGES_PUSH_TOKEN }}
+          REPO: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          EVENT_NAME: ${{ github.event_name }}
+          CI_EVENT: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.event || '' }}
+          PR_NUMBER: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.pull_requests[0].number || inputs.pr_number }}
+          HEAD_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
+          PAGES_BASE: https://nathanaherne.github.io/cruisin/
+        run: python3 scripts/cursor_automerge.py

@@ -23,6 +23,7 @@ FIELD_RE = re.compile(r"(\w+)=([^\s]+)")
 SECRET_RE = re.compile(r"(crsr_|cursor_|ghp_|github_pat_)[A-Za-z0-9_\-]+", re.I)
 READY_LABEL = "cursor-ready"
 STATUSES = frozenset({"queued", "running", "blocked", "failed", "completed"})
+CURSOR_BRANCH_RE = re.compile(r"^cursor/issue-(\d+)-[A-Za-z0-9._-]+$")
 RETRIGGER_MODES = frozenset({"manual", "cursor-ready", "reopened"})
 TERMINAL_RUNS = frozenset({"FINISHED", "ERROR", "CANCELLED", "EXPIRED"})
 
@@ -104,6 +105,22 @@ def eligibility(
     return _skip(f"ignore_issue_action:{action or 'none'}", number)
 
 
+def open_issue_pull_request(pulls: list[dict], issue_number: int, repo: str) -> str:
+    """URL of an open same-repo Cursor pull request for this issue, or empty."""
+    for pr in pulls or []:
+        if str(pr.get("state") or "") != "open":
+            continue
+        head_repo = str(pr.get("head_repo") or "")
+        if head_repo and head_repo != repo:
+            continue
+        ref = str(pr.get("head_ref") or "")
+        match = CURSOR_BRANCH_RE.match(ref)
+        if not match or int(match.group(1)) != issue_number:
+            continue
+        return str(pr.get("html_url") or ref)
+    return ""
+
+
 def mode_for_attempt(mode: str, attempt: int) -> str:
     if attempt > 1 and mode:
         return "manual"
@@ -168,8 +185,17 @@ def render_comment(
     links: list[tuple[str, str]] | None = None,
 ) -> str:
     agent_field = f" agent={agent_id}" if agent_id else ""
+    pr_field = ""
+    branch_field = ""
+    if links:
+        pr_url, branch_name = links[0]
+        pr_number = pr_url.rstrip("/").split("/pull/")[-1] if "/pull/" in pr_url else ""
+        if pr_number.isdigit():
+            pr_field = f" pr={pr_number}"
+        if branch_name and ">" not in branch_name and " " not in branch_name:
+            branch_field = f" branch={branch_name}"
     lines = [
-        f"<!-- cursor-issue-agent:v1 issue={issue} run={run_id} status={status}{agent_field} -->",
+        f"<!-- cursor-issue-agent:v1 issue={issue} run={run_id} status={status}{agent_field}{pr_field}{branch_field} -->",
         "### Cursor issue agent",
         f"- **Status:** {status}",
         f"- **Workflow run:** https://github.com/{repo}/actions/runs/{run_id}",
@@ -230,6 +256,43 @@ def _request(url: str, method: str, token: str, payload: dict | None = None, bas
         error = urllib.error.HTTPError(exc.url, exc.code, exc.reason, exc.headers, None)
         error.detail = detail  # type: ignore[attr-defined]
         raise error
+
+
+def _open_issue_pr(token: str, repo: str, issue_number: int) -> str:
+    """Return an open Cursor pull request URL, or empty when none is visible.
+
+    A lookup failure must not stop dispatch: the issues workflow is still the
+    only way an issue reaches an agent. A positive match does stop a second agent.
+    """
+    pulls: list[dict] = []
+    try:
+        for page in range(1, 4):
+            batch = _request(
+                f"https://api.github.com/repos/{repo}/pulls?state=open&per_page=100&page={page}",
+                "GET",
+                token,
+            )
+            if not isinstance(batch, list) or not batch:
+                break
+            for item in batch:
+                if not isinstance(item, dict):
+                    continue
+                head = item.get("head") or {}
+                head_repo = (head.get("repo") or {}) if isinstance(head, dict) else {}
+                pulls.append(
+                    {
+                        "state": item.get("state") or "",
+                        "head_ref": head.get("ref") if isinstance(head, dict) else "",
+                        "head_repo": head_repo.get("full_name") if isinstance(head_repo, dict) else "",
+                        "html_url": item.get("html_url") or "",
+                    }
+                )
+            if len(batch) < 100:
+                break
+    except urllib.error.HTTPError as exc:
+        print(f"open pull request lookup failed: HTTP {exc.code}", file=sys.stderr)
+        return ""
+    return open_issue_pull_request(pulls, issue_number, repo)
 
 
 def _comments(token: str, repo: str, number: int) -> list[dict]:
@@ -403,6 +466,10 @@ def main() -> int:
     if reason:
         print(json.dumps({"dispatch": False, "issue_number": issue_num, "reason": reason}))
         return 0
+    existing = _open_issue_pr(token, repo, issue_num)
+    if existing:
+        print(json.dumps({"dispatch": False, "issue_number": issue_num, "reason": "open_pull_request", "pull_request": existing}))
+        return 0
 
     try:
         _request(
@@ -492,7 +559,11 @@ def main() -> int:
             run_id,
             "completed",
             agent_id=agent_id,
-            detail="Pull request opened. It is not merged and nothing was deployed.",
+            detail=(
+                "Pull request opened. This dispatcher does not merge or deploy. "
+                "The safe auto-merge workflow merges only a low-risk Cursor pull request "
+                "after Validate succeeds."
+            ),
             links=links,
         )
         return 0
