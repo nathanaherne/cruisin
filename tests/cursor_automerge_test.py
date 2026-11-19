@@ -522,6 +522,18 @@ class DeployTest(unittest.TestCase):
         self.assertIn("Merge SHA", body)
         self.assertNotIn("ghp_", body)
 
+    def test_pages_blocker_names_the_owner_screens(self):
+        detail = gate._detail_for({"reason": "pages_not_triggered"})
+        self.assertIn("This run had no PAGES_PUSH_TOKEN", detail)
+        self.assertIn(
+            "https://github.com/settings/personal-access-tokens/new?name=CRUISIN_PAGES_PUSH_TOKEN"
+            "&description=Pages+merge+for+nathanaherne%2Fcruisin&target_name=nathanaherne&contents=write",
+            detail,
+        )
+        self.assertIn("https://github.com/nathanaherne/cruisin/settings/secrets/actions/new", detail)
+        self.assertIn("only nathanaherne/cruisin", detail)
+        self.assertNotIn("There is no deploy credential", detail)
+
 
 class WorkflowShapeTest(unittest.TestCase):
     def triggers(self, name: str) -> str:
